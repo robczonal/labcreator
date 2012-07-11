@@ -12,7 +12,7 @@ class CreateEquipment < ActiveRecord::Migration
       t.text :description
       t.text :alert
       t.string :type
-
+      t.references :procedurex
       t.timestamps
     end
     add_index :equipment, :procedurex_id
