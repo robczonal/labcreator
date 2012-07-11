@@ -1,0 +1,65 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @equipment.name %>
+</p>
+
+<p>
+  <b>Availability:</b>
+  <%= @equipment.availability %>
+</p>
+
+<p>
+  <b>Height:</b>
+  <%= @equipment.height %>
+</p>
+
+<p>
+  <b>Width:</b>
+  <%= @equipment.width %>
+</p>
+
+<p>
+  <b>Depth:</b>
+  <%= @equipment.depth %>
+</p>
+
+<p>
+  <b>Price:</b>
+  <%= @equipment.price %>
+</p>
+
+<p>
+  <b>Externallink:</b>
+  <%= @equipment.externallink %>
+</p>
+
+<p>
+  <b>Picture:</b>
+  <%= @equipment.picture %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%= @equipment.description %>
+</p>
+
+<p>
+  <b>Alert:</b>
+  <%= @equipment.alert %>
+</p>
+
+<p>
+  <b>Type:</b>
+  <%= @equipment.type %>
+</p>
+
+<p>
+  <b>Procedurex:</b>
+  <%= @equipment.procedurex %>
+</p>
+
+
+<%= link_to 'Edit', edit_equipment_path(@equipment) %> |
+<%= link_to 'Back', equipment_index_path %>

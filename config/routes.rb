@@ -1,4 +1,12 @@
 Teamlab::Application.routes.draw do
+  resources :equipment
+
+  resources :procedurexes
+
+  resources :testxes
+
+  resources :analyses
+
 	resources :projects
   # The priority is based upon order of creation:
   # first created -> highest priority.

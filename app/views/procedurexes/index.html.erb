@@ -1,0 +1,31 @@
+<h1>Listing procedurexes</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Astmip</th>
+    <th>Subtype</th>
+    <th>Description</th>
+    <th>Testx</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @procedurexes.each do |procedurex| %>
+  <tr>
+    <td><%= procedurex.name %></td>
+    <td><%= procedurex.astmip %></td>
+    <td><%= procedurex.subtype %></td>
+    <td><%= procedurex.description %></td>
+    <td><%= procedurex.testx %></td>
+    <td><%= link_to 'Show', procedurex %></td>
+    <td><%= link_to 'Edit', edit_procedurex_path(procedurex) %></td>
+    <td><%= link_to 'Destroy', procedurex, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Procedurex', new_procedurex_path %>
