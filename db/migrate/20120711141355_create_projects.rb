@@ -7,7 +7,7 @@ class CreateProjects < ActiveRecord::Migration
       t.string :email
       t.text :description
       t.date :deadline
-
+      t.references :procedurex
       t.timestamps
     end
   end
