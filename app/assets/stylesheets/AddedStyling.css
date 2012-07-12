@@ -1,0 +1,11 @@
+.outercont {
+    width:940px;
+    margin:0 auto;
+}
+
+.container {
+    background-color: #fefefe;
+    border-width: 1px;
+    border-style: solid;
+    border-color: gray;
+}

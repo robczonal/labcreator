@@ -3,6 +3,7 @@
 <head>
   <title>Teamlab</title>
   <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= stylesheet_link_tag    "AddedStyling"%>  
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
 </head>
@@ -13,7 +14,13 @@
         <h1>NuLab</h1>
       </div>
       <div class="breadbar">
-        <p>breadcrumb&lt;breadcrumb</p>
+        <p><%=link_to "Projects", projects_path %>
+        <%=link_to "Analyses", analyses_path %>
+        <%=link_to "Tests", testxes_path %>
+        <%=link_to "Procedures", procedurexes_path %>
+        <%=link_to "Equipment", equipment_path %>
+        </p>
+        
       </div>
       <div class="content">
         <%= yield %>
