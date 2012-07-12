@@ -7,8 +7,27 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+  <div class="outercont">
+    <div class="container">
+      <div class="header">
+        <h1>NuLab</h1>
+      </div>
+      <div class="breadbar">
+        <p>breadcrumb&lt;breadcrumb</p>
+      </div>
+      <div class="content">
+        <%= yield %>
+      </div>
+      <div class="footer">
+        <p>Footer</p>
+      </div>
+    </div>
+    
+    
+  </div>
 
-<%= yield %>
+
+
 
 </body>
 </html>
