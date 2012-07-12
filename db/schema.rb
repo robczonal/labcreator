@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120711153822) do
+ActiveRecord::Schema.define(:version => 20120712134603) do
 
   create_table "analyses", :force => true do |t|
     t.string   "name"
@@ -31,12 +31,9 @@ ActiveRecord::Schema.define(:version => 20120711153822) do
     t.text     "description"
     t.text     "alert"
     t.string   "type"
-    t.integer  "procedurex_id"
-    t.datetime "created_at",    :null => false
-    t.datetime "updated_at",    :null => false
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
   end
-
-  add_index "equipment", ["procedurex_id"], :name => "index_equipment_on_procedurex_id"
 
   create_table "procedurexes", :force => true do |t|
     t.string   "name"
@@ -50,6 +47,11 @@ ActiveRecord::Schema.define(:version => 20120711153822) do
 
   add_index "procedurexes", ["testx_id"], :name => "index_procedurexes_on_testx_id"
 
+  create_table "procedurexes_equipment", :id => false, :force => true do |t|
+    t.integer "procedurex_id"
+    t.integer "equipment_id"
+  end
+
   create_table "projects", :force => true do |t|
     t.string   "name"
     t.string   "client"
@@ -57,8 +59,14 @@ ActiveRecord::Schema.define(:version => 20120711153822) do
     t.string   "email"
     t.text     "description"
     t.date     "deadline"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.integer  "procedurex_id"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+  end
+
+  create_table "projects_analyses", :id => false, :force => true do |t|
+    t.integer "project_id"
+    t.integer "analysis_id"
   end
 
   create_table "testxes", :force => true do |t|
