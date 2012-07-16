@@ -14,5 +14,5 @@ end
 
 Then /^I should be on the analysis show page$/ do
   visit('/analyses/1')
-  page.should have_content("oil in water")
+  page.should have_content("oil analysis")
 end
