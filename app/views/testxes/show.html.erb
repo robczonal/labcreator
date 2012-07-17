@@ -7,7 +7,11 @@
 
 <p>
   <b>Analysis:</b>
-  <%= @testx.analysis.name %>
+  <% if @testx.analysis !nil? %>
+    <%= @testx.analysis.name %>
+  <% else %>
+    Unassigned. Please assign test to analysis or it will not be viewable
+  <%end%>
 </p>
 
 

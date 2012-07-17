@@ -20,8 +20,8 @@
     <td><%= procedurex.subtype %></td>
     <td><%= procedurex.description %></td>
     
-    <td><% if procedurex.testx !nil? %><%= procedurex.testx.name %><%end%></td>
-    <td><% if procedurex.testx !nil? %><% if procedurex.testx.analysis !nil? %><%= procedurex.testx.analysis.name %><%end%><%end%></td>
+    <td><% if procedurex.testx !nil? %><%= procedurex.testx.name %><% else %>Unassigned<%end%></td>
+    <td><% if procedurex.testx !nil? %><% if procedurex.testx.analysis !nil? %><%= procedurex.testx.analysis.name %><% else %>Unassigned<%end%><%end%></td>
     <td><%= link_to 'Show', procedurex %></td>
     <td><%= link_to 'Edit', edit_procedurex_path(procedurex) %></td>
     <td><%= link_to 'Destroy', procedurex, method: :delete, data: { confirm: 'Are you sure?' } %></td>
