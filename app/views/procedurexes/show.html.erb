@@ -22,10 +22,18 @@
 
 <p>
   <b>Testx:</b>
-  <%= @procedurex.testx.name %>
+ <% if @procedurex.testx !nil? %>
+    <%= @procedurex.testx.name %>
+  <% else %>
+  Unassigned. Please assign this procedure to a test or it will not be viewable
+<%end%>
 </p>
   <b>Analysis:</b>
-  <%= @procedurex.testx.analysis.name %>
+  <% if @procedurex.testx !nil? %>
+    <% if @procedurex.testx.analysis !nil? %>
+      <%= @procedurex.testx.analysis.name %>
+    <% end %>
+  <% end %> 
 <p>
   
 </p>
