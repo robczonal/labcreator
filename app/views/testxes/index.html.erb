@@ -12,7 +12,7 @@
 <% @testxes.each do |testx| %>
   <tr>
     <td><%= testx.name %></td>
-    <td><%= testx.analysis %></td>
+    <td><%= testx.analysis.name %></td>
     <td><%= link_to 'Show', testx %></td>
     <td><%= link_to 'Edit', edit_testx_path(testx) %></td>
     <td><%= link_to 'Destroy', testx, method: :delete, data: { confirm: 'Are you sure?' } %></td>

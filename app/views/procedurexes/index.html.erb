@@ -7,6 +7,7 @@
     <th>Subtype</th>
     <th>Description</th>
     <th>Testx</th>
+    <th>Analysis</th>
     <th></th>
     <th></th>
     <th></th>
@@ -18,7 +19,8 @@
     <td><%= procedurex.astmip %></td>
     <td><%= procedurex.subtype %></td>
     <td><%= procedurex.description %></td>
-    <td><%= procedurex.testx %></td>
+    <td><%= procedurex.testx.name %></td>
+    <td><%= procedurex.testx.analysis.name %></td>
     <td><%= link_to 'Show', procedurex %></td>
     <td><%= link_to 'Edit', edit_procedurex_path(procedurex) %></td>
     <td><%= link_to 'Destroy', procedurex, method: :delete, data: { confirm: 'Are you sure?' } %></td>
