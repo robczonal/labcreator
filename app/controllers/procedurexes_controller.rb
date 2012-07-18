@@ -4,6 +4,10 @@ class ProcedurexesController < ApplicationController
   user_signed_in?
   current_user
   user_session
+  
+  admin_signed_in?
+current_admin
+admin_session
 
 # GET /procedurexes
   # GET /procedurexes.json

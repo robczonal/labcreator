@@ -5,6 +5,10 @@ class ProjectsController < ApplicationController
   current_user
   user_session
   
+  admin_signed_in?
+current_admin
+admin_session
+  
   # GET /projects
   # GET /projects.json
   def index

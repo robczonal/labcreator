@@ -4,6 +4,10 @@ class EquipmentController < ApplicationController
   user_signed_in?
   current_user
   user_session
+  
+  admin_signed_in?
+current_admin
+admin_session
 
 # GET /equipment
   # GET /equipment.json
@@ -30,6 +34,7 @@ class EquipmentController < ApplicationController
   # GET /equipment/new
   # GET /equipment/new.json
   def new
+	  before_filter :authenticate_admin!
     @equipment = Equipment.new
 
     respond_to do |format|

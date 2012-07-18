@@ -4,6 +4,10 @@ class AnalysesController < ApplicationController
   user_signed_in?
   current_user
   user_session
+  
+  admin_signed_in?
+current_admin
+admin_session
 
 # GET /analyses
   # GET /analyses.json
@@ -30,6 +34,7 @@ class AnalysesController < ApplicationController
   # GET /analyses/new
   # GET /analyses/new.json
   def new
+	  before_filter :authenticate_admin!
     @analysis = Analysis.new
 
     respond_to do |format|

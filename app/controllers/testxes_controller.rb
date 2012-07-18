@@ -4,6 +4,10 @@ class TestxesController < ApplicationController
   user_signed_in?
   current_user
   user_session
+  
+  admin_signed_in?
+current_admin
+admin_session
 
 # GET /testxes
   # GET /testxes.json
@@ -30,6 +34,7 @@ class TestxesController < ApplicationController
   # GET /testxes/new
   # GET /testxes/new.json
   def new
+	  before_filter :authenticate_admin!
     @testx = Testx.new
 
     respond_to do |format|
