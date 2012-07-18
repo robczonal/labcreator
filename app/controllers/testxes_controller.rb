@@ -1,5 +1,11 @@
 class TestxesController < ApplicationController
-  # GET /testxes
+
+  before_filter :authenticate_user!
+  user_signed_in?
+  current_user
+  user_session
+
+# GET /testxes
   # GET /testxes.json
   def index
     @testxes = Testx.all

@@ -1,5 +1,11 @@
 class EquipmentController < ApplicationController
-  # GET /equipment
+
+  before_filter :authenticate_user!
+  user_signed_in?
+  current_user
+  user_session
+
+# GET /equipment
   # GET /equipment.json
   def index
     @equipment = Equipment.all

@@ -1,4 +1,6 @@
 Teamlab::Application.routes.draw do
+  devise_for :users
+
 	resources :projects
 	resources :analyses
 	resources :testxes

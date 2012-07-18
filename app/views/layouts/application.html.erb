@@ -20,7 +20,9 @@
         <%=link_to "Procedures", procedurexes_path %>
         <%=link_to "Equipment", :controller => "equipment", :action => "index" %>
         
-        
+	<p class="notice"><%= notice %></p>
+       <p class="alert"><%= alert %></p>
+
       </div>
       <div class="content">
         <%= yield %>

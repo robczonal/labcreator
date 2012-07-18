@@ -1,5 +1,11 @@
 class ProcedurexesController < ApplicationController
-  # GET /procedurexes
+
+  before_filter :authenticate_user!
+  user_signed_in?
+  current_user
+  user_session
+
+# GET /procedurexes
   # GET /procedurexes.json
   def index
     @procedurexes = Procedurex.all
