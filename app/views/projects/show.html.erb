@@ -1,35 +1,26 @@
-<p id="notice"><%= notice %></p>
-
+<%= render 'tabs1' %>
 <p>
-  <b>Name:</b>
-  <%= @project.name %>
-</p>
-
-<p>
-  <b>Client:</b>
-  <%= @project.client %>
-</p>
-
-<p>
-  <b>Location:</b>
+  <strong>Location:</strong>
   <%= @project.location %>
 </p>
 
 <p>
-  <b>Email:</b>
+  <strong>Email:</strong>
   <%= @project.email %>
 </p>
 
 <p>
-  <b>Description:</b>
+  <strong>Description:</strong>
   <%= @project.description %>
 </p>
 
 <p>
-  <b>Deadline:</b>
+  <strong>Deadline:</strong>
   <%= @project.deadline %>
 </p>
 
 
 <%= link_to 'Edit', edit_project_path(@project) %> |
 <%= link_to 'Back', projects_path %>
+
+
