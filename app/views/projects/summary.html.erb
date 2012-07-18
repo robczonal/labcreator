@@ -7,8 +7,9 @@
     <th>Number of Tests</th>
     <th>Status</th>
   </tr>
-  <% if @project.analyses !nil?%>
-    <% @project.analyses each do |an|%>
+  <% if @project.analyses.count<0 %>
+    <tr><td>Access</td><td></td><td></td></tr>
+    <% @project.analyses.each do |an|%>
       <tr>
         <td><%= an.name%></td>
         <td>an.testx.count</td>
@@ -16,7 +17,7 @@
       </tr>
     <% end %>
   <% else %>
-    <tr><td><em>Empty</em></td></tr
+    <tr><td><em>Empty</em></td><td></td><td></td></tr>
   <% end %>
 </table>
 

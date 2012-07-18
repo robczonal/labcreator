@@ -6,8 +6,8 @@
     <th>Number of Tests</th>
     <th>Status</th>
   </tr>
-  <% if @project.analyses !nil? %>
-    <% @project.analyses each do |an| %>
+  <% if @project.analyses.count<0 %>
+    <% @project.analyses.each do |an| %>
       <tr>
         <td><%=an.name %></td>
         <td>an.testx.count</td>
@@ -18,8 +18,10 @@
     <tr><td><em>Empty</em></td></tr
   <%end%>
 </table>
-
+<%= form_for(@project) do |p| %>
 <div class="field">
-   <%= @project.label :'Add Analysis' %><br />
-   <%= @project.collection_select(:analysis_id, Analysis.all, :id, :name ) %>
+   <%= p.label :'Add Analysis' %><br />
+   <%#= p.collection_select(:analysis_id, Analysis.all, :id, :name )
+   %>
 </div>
+<% end%>
