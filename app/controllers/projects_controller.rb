@@ -21,6 +21,34 @@ class ProjectsController < ApplicationController
     end
   end
 
+  def summary
+    @project = Project.find(params[:id])
+
+    respond_to do |format|
+      format.html # show.html.erb
+      format.json { render json: @project }
+    end
+  end
+  
+  def analyses
+    @project = Project.find(params[:id])
+
+    respond_to do |format|
+      format.html # show.html.erb
+      format.json { render json: @project }
+    end
+  end
+    
+  def equip
+    @project = Project.find(params[:id])
+
+    respond_to do |format|
+      format.html # show.html.erb
+      format.json { render json: @project }
+    end
+  end
+  
+
   # GET /projects/new
   # GET /projects/new.json
   def new

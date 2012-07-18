@@ -1,1 +1,24 @@
 <%= render 'tabs1' %>
+
+<h2>Analyses</h2>
+<table>
+  <tr>
+    <th>Type</th>
+    <th>Number of Tests</th>
+    <th>Status</th>
+  </tr>
+  <% if @project.analyses !nil?%>
+    <% @project.analyses each do |an|%>
+      <tr>
+        <td><%= an.name%></td>
+        <td>an.testx.count</td>
+        <td>Not available</td>
+      </tr>
+    <% end %>
+  <% else %>
+    <tr><td><em>Empty</em></td></tr
+  <% end %>
+</table>
+
+<p><strong>Total Space:</strong>sum of all @project.equipment.width*depth</p>
+<p><strong>Total Cost:</strong>sum of all @project.equipment.price</p>
