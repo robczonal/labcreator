@@ -1,14 +1,21 @@
 class AnalysesController < ApplicationController
 
   before_filter :authenticate_user!
-  user_signed_in?
-  current_user
-  user_session
-  
-  admin_signed_in?
-current_admin
-admin_session
+  before_filter :authenticate_admin!, :only => [:new]
 
+  def find_user_name
+     if user_signed_in?
+        return user.current_user
+	user_session
+     end
+  end
+
+  def find_admin_name
+     if admin_signed_in?
+        return admin.current_admin
+	admin_session
+     end
+  end
 # GET /analyses
   # GET /analyses.json
   def index
@@ -34,7 +41,6 @@ admin_session
   # GET /analyses/new
   # GET /analyses/new.json
   def new
-	  before_filter :authenticate_admin!
     @analysis = Analysis.new
 
     respond_to do |format|

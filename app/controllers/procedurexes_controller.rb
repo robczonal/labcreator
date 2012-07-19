@@ -1,13 +1,19 @@
 class ProcedurexesController < ApplicationController
 
   before_filter :authenticate_user!
-  user_signed_in?
-  current_user
-  user_session
-  
-  admin_signed_in?
-current_admin
-admin_session
+  def find_user_name
+     if user_signed_in?
+        return user.current_user
+	user_session
+     end
+  end
+
+  def find_admin_name
+     if admin_signed_in?
+        return admin.current_admin
+	admin_session
+     end
+  end
 
 # GET /procedurexes
   # GET /procedurexes.json
