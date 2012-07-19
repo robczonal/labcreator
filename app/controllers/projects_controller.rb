@@ -88,7 +88,7 @@ class ProjectsController < ApplicationController
   # PUT /projects/1
   # PUT /projects/1.json
   def update
-    params[:project][:analysis_ids] ||= []
+    params[:project][:analysis_ids]
     @project = Project.find(params[:id])
 
     respond_to do |format|

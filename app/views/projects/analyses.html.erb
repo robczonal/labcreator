@@ -6,7 +6,7 @@
     <th>Number of Tests</th>
     <th>Status</th>
   </tr>
-  <% if @project.analyses.count<0 %>
+  <% if @project.analyses.count>0 %>
     <% @project.analyses.each do |an| %>
       <tr>
         <td><%=an.name %></td>
@@ -26,6 +26,7 @@
       <%= a.name %>
     </div>
   <% end%>
+  <%= hidden_field_tag "project[analysis_ids][]", '' %>
   <div class="actions">
     <%=f.submit %>
   </div>
