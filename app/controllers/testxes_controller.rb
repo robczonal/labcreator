@@ -1,6 +1,7 @@
 class TestxesController < ApplicationController
 
   before_filter :authenticate_user!
+   before_filter :authenticate_admin!, :only => [:new]
   def find_user_name
      if user_signed_in?
         return user.current_user
@@ -40,7 +41,6 @@ class TestxesController < ApplicationController
   # GET /testxes/new
   # GET /testxes/new.json
   def new
-	  before_filter :authenticate_admin!
     @testx = Testx.new
 
     respond_to do |format|

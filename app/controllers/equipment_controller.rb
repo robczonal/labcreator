@@ -1,6 +1,7 @@
 class EquipmentController < ApplicationController
 
   before_filter :authenticate_user!
+   before_filter :authenticate_admin!, :only => [:new]
   def find_user_name
      if user_signed_in?
         return user.current_user
@@ -40,7 +41,6 @@ class EquipmentController < ApplicationController
   # GET /equipment/new
   # GET /equipment/new.json
   def new
-	  before_filter :authenticate_admin!
     @equipment = Equipment.new
 
     respond_to do |format|

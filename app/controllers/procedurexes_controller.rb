@@ -1,6 +1,7 @@
 class ProcedurexesController < ApplicationController
 
   before_filter :authenticate_user!
+   before_filter :authenticate_admin!, :only => [:new]
   def find_user_name
      if user_signed_in?
         return user.current_user
