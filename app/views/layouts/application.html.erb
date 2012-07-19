@@ -19,7 +19,8 @@
         <%= link_to "Sign out", destroy_user_session_path, :method => :delete %>  
       <% else %>  
         <%= link_to "Sign up", new_user_registration_path %> or  
-        <%= link_to "Sign in", new_user_session_path %>  
+        <%= link_to "Sign in", new_user_session_path %> </br>
+		or <%= link_to "Sign in as administrator", new_admin_session_path %>
       <% end %>  
     </div>  
 	<p class="notice"><%= notice %></p>
