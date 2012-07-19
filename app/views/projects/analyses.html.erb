@@ -19,12 +19,14 @@
   <%end%>
 </table>
 
-<%=form_for([@project, @project.analyses.build]) do |p| %>
-<div class="field">
-   <%= p.label :'Add Analysis'%><br />
-   <%= select(:name, :id, @analyses.collect {|x| [x.name]})%>
-</div>
-<div class="actions">
-  <%=p.submit %>
-</div>
+<%=form_for(@project) do |f| %>
+  <% @analyses.each do |a| %>
+    <div class="field">
+      <%= check_box_tag "project[analysis_ids][]", a.id, @project.analyses.include?(a)%><br />
+      <%= a.name %>
+    </div>
+  <% end%>
+  <div class="actions">
+    <%=f.submit %>
+  </div>
 <% end %>
