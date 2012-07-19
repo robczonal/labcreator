@@ -1,18 +1,14 @@
 class ProjectsController < ApplicationController
   
-  before_filter :authenticate_user!
-  
-  def find_user_name
-     if user_signed_in?
-        return user.current_user
-	user_session
-     end
-  end
+  before_filter :authenticate_user_or_admin! 
 
-  def find_admin_name
-     if admin_signed_in?
+  def find_user_name
+     if admin_signed_in? 
         return admin.current_admin
 	admin_session
+     elsif user_signed_in?
+        return user.current_user
+	user_session
      end
   end
   
