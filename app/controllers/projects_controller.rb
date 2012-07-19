@@ -32,6 +32,7 @@ class ProjectsController < ApplicationController
   
   def analyses
     @project = Project.find(params[:id])
+    @analyses = Analysis.all
 
     respond_to do |format|
       format.html # show.html.erb

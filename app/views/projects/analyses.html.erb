@@ -15,13 +15,16 @@
       </tr>
     <% end %>
   <%else%>
-    <tr><td><em>Empty</em></td></tr
+    <tr><td><em>Empty</em></td></tr>
   <%end%>
 </table>
-<%= form_for(@project) do |p| %>
+
+<%=form_for([@project, @project.analyses.build]) do |p| %>
 <div class="field">
-   <%= p.label :'Add Analysis' %><br />
-   <%#= p.collection_select(:analysis_id, Analysis.all, :id, :name )
-   %>
+   <%= p.label :'Add Analysis'%><br />
+   <%= select(:name, :id, @analyses.collect {|x| [x.name]})%>
 </div>
-<% end%>
+<div class="actions">
+  <%=p.submit %>
+</div>
+<% end %>

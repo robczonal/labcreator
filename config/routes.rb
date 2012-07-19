@@ -2,7 +2,12 @@ Teamlab::Application.routes.draw do
 	match 'projects/:id/summary', :controller => 'projects', :action => 'summary'
 	match 'projects/:id/analyses', :controller => 'projects', :action => 'analyses'
 	match 'projects/:id/equip', :controller => 'projects', :action => 'equip'
-	resources :projects
+	resources :projects do
+          resources :analyses
+          resources :testxes
+          resources :procedurexes
+          resources :equipment
+	end
 	resources :analyses
 	resources :testxes
 	resources :procedurexes
