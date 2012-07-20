@@ -8,23 +8,31 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+  <div class="background">
   <div class="outercont">
     <div class="container">
       <div class="header">
-        <h1>NuLab</h1>
+        <%=image_tag("image003.jpg")%> 
       </div>
+      
+      <hr class="divideline" />
+      
       <div class="breadbar">
         <%=link_to "Projects", projects_path %>
         <%=link_to "Analyses", analyses_path %>
         <%=link_to "Tests", testxes_path %>
         <%=link_to "Procedures", procedurexes_path %>
         <%=link_to "Equipment", :controller => "equipment", :action => "index" %>
-        
-        
       </div>
+      
+      <hr class="divideline" />
+      
       <div class="content">
         <%= yield %>
       </div>
+      
+      <hr class="divideline" />
+      
       <div class="footer">
         <p>Footer</p>
       </div>
@@ -32,7 +40,7 @@
     
     
   </div>
-
+</div>
 
 
 
