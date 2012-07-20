@@ -39,7 +39,7 @@ class AnalysesController < ApplicationController
 
   # POST /analyses
   # POST /analyses.json
-  def create
+  def create    
     @analysis = Analysis.new(params[:analysis])
 
     respond_to do |format|

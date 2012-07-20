@@ -5,13 +5,16 @@
     <th>Type</th>
     <th>Number of Tests</th>
     <th>Status</th>
+    <th>Uncheck to remove</th>
   </tr>
+<%=form_for(@project) do |f| %>  
   <% if @project.analyses.count>0 %>
     <% @project.analyses.each do |an| %>
       <tr>
         <td><%=an.name %></td>
         <td>an.testx.count</td>
         <td>Not available</td>
+        <td><%= check_box_tag "project[analysis_ids][]", an.id, @project.analyses.include?(an)%><br /></td>
       </tr>
     <% end %>
   <%else%>
@@ -19,13 +22,14 @@
   <%end%>
 </table>
 
-<%=form_for(@project) do |f| %>
-  <% @analyses.each do |a| %>
-    <div class="field">
-      <%= check_box_tag "project[analysis_ids][]", a.id, @project.analyses.include?(a)%><br />
-      <%= a.name %>
-    </div>
-  <% end%>
+
+  <select name="project[analysis_ids][]">
+    <option value="">Add Test</option>
+    <% @analyses.each do |a| %>
+      <option value="<%=a.id%>"><%=a.name%></option>
+    <%end%>
+  </select>
+
   <%= hidden_field_tag "project[analysis_ids][]", '' %>
   <div class="actions">
     <%=f.submit %>
