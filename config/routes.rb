@@ -1,4 +1,9 @@
 Teamlab::Application.routes.draw do
+	
+devise_for :admins do get '/admins/sign_out' => 'devise/sessions#destroy' end
+
+  devise_for :users
+
 	match 'projects/:id/summary', :controller => 'projects', :action => 'summary'
 	match 'projects/:id/analyses', :controller => 'projects', :action => 'analyses'
 	match 'projects/:id/equip', :controller => 'projects', :action => 'equip'
@@ -14,7 +19,7 @@ Teamlab::Application.routes.draw do
 	resources :equipment
 	resources :procedurexes_equipment
 	resources :projects_analyses
-
+	
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

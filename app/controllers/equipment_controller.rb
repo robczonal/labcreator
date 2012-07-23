@@ -1,5 +1,20 @@
 class EquipmentController < ApplicationController
-  # GET /equipment
+
+
+   before_filter :authenticate_admin!, :only => [:new]
+  before_filter :authenticate_user_or_admin! 
+
+  def find_user_name
+     if admin_signed_in? 
+        return admin.current_admin
+	admin_session
+     elsif user_signed_in?
+        return user.current_user
+	user_session
+     end
+  end
+
+# GET /equipment
   # GET /equipment.json
   def index
     @equipment = Equipment.all
