@@ -1,4 +1,11 @@
-Given /^I go to the new test page$/ do
+Given /^I am logged in as "([^\"]*)" with password "([^\"]*)"$/ do |email, password|  
+      visit ('/admins/sign_in')  
+      fill_in "Email", :with => email
+      fill_in "Password", :with => password  
+      click_button "Sign in"  
+    end  
+
+When /^I go to the new test page$/ do
     visit('/testxes/new') 
    page.should have_content("New testx")
 end
