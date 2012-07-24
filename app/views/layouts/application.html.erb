@@ -22,13 +22,12 @@
                   <div id="user_nav">  
       <% if admin_signed_in? %>  
         Signed in as <%= current_admin.email %>  
-        <%= link_to "Sign out", destroy_admin_session_path, :method => :delete %>  
+        <%= link_to "Sign out", destroy_admin_session_path, :method => :delete %> 
       <% elsif user_signed_in? %>  
         Signed in as <%= current_user.email %>. Not you?  
         <%= link_to "Sign out", destroy_user_session_path, :method => :delete %>  
       <% else %>  
-        <%= link_to "Sign up", new_user_registration_path %> or  
-        <%= link_to "Sign in", new_user_session_path %> </br>
+                <%= link_to "Sign in", new_user_session_path %> </br>
 		or <%= link_to "Sign in as administrator", new_admin_session_path %>
       <% end %>  
     </div>  
@@ -44,6 +43,7 @@
         <%=link_to "Tests", testxes_path %>
         <%=link_to "Procedures", procedurexes_path %>
         <%=link_to "Equipment", :controller => "/equipment", :action => "index" %>
+	<%= link_to "Create new user", new_user_registration_path %> 
       <% else %>
       <%=link_to "Projects", projects_path %>
 	<% end %>  
