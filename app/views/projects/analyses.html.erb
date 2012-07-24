@@ -12,29 +12,39 @@
     <% @project.analyses.each do |an| %>
       <tr>
         <td><%=an.name %></td>
-        <td>an.testx.count</td>
+        <td>count</td>
         <td>Not available</td>
         <td><%= check_box_tag "project[analysis_ids][]", an.id, @project.analyses.include?(an)%><br /></td>
       </tr>
-      <tr>
-        <% if an.testxes.count>0 %>
-          <% an.testxes.each do |t| %>
-            <td></td>
-            <td><%=t.name %></td>
-            <td><%=t.procedurexes.count %></td>
-          <% end %>
-        <% end %>
-      </tr>
-      <tr>
-        <td colspan="3">
-        <select name="project[analysis_ids][]">
-          <option value="">Add Test</option>
-          <% @analyses.each do |a| %>
-            <option value="<%=a.id%>"><%=a.name%></option>
-          <%end%>
-        </select>
-        </td>
-      </tr>  
+        
+            <%@project.testxes.each do |t|%>
+              
+              <% if t.analysis_id==an.id %>
+                <tr>
+                  <td></td>
+                  <td><%=t.name %></td>
+                  <td></td>
+                  <td><%= check_box_tag "project[testx_ids][]", t.id, @project.testxes.include?(t)%></td>
+                </tr>
+              <% end %>
+              <%= hidden_field_tag "project[testx_ids][]", t.id%>
+            <%end%>
+            <tr>
+              <td></td>
+              <td colspan="3">
+                <select name="project[testx_ids][]">
+                  <option value="">Add Test</option>
+                  <% if an.testxes.count>0 %>
+                    <% an.testxes.each do |t| %>
+                      <option value="<%=t.id%>"><%=t.name%></option>            
+                    <% end %>
+                  <% end %>
+                </select>
+              </td>
+            </tr>
+
+      
+        
     <% end %>
   <%else%>
     <tr><td><em>Empty</em></td></tr>
@@ -50,6 +60,7 @@
   </select>
 
   <%= hidden_field_tag "project[analysis_ids][]", '' %>
+
   <div class="actions">
     <%=f.submit %>
   </div>
