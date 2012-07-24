@@ -16,6 +16,25 @@
         <td>Not available</td>
         <td><%= check_box_tag "project[analysis_ids][]", an.id, @project.analyses.include?(an)%><br /></td>
       </tr>
+      <tr>
+        <% if an.testxes.count>0 %>
+          <% an.testxes.each do |t| %>
+            <td></td>
+            <td><%=t.name %></td>
+            <td><%=t.procedurexes.count %></td>
+          <% end %>
+        <% end %>
+      </tr>
+      <tr>
+        <td colspan="3">
+        <select name="project[analysis_ids][]">
+          <option value="">Add Test</option>
+          <% @analyses.each do |a| %>
+            <option value="<%=a.id%>"><%=a.name%></option>
+          <%end%>
+        </select>
+        </td>
+      </tr>  
     <% end %>
   <%else%>
     <tr><td><em>Empty</em></td></tr>
@@ -24,7 +43,7 @@
 
 
   <select name="project[analysis_ids][]">
-    <option value="">Add Test</option>
+    <option value="">Add Analysis</option>
     <% @analyses.each do |a| %>
       <option value="<%=a.id%>"><%=a.name%></option>
     <%end%>
