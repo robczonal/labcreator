@@ -17,6 +17,7 @@ group :development, :test do
 
 end
 
+gem 'rails_admin'
 gem 'devise', '2.0.4'
 gem 'bcrypt-ruby', :require => 'bcrypt'
 
