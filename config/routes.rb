@@ -1,4 +1,4 @@
-Teamlab::Application.routes.draw do
+NuLab::Application.routes.draw do
 	
   mount RailsAdmin::Engine => '/nulab_admin', :as => 'rails_admin'
 
