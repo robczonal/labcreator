@@ -15,7 +15,7 @@
         <td><%=p.name %></td>
         <td><%=p.subtype %></td>
         <td><%=p.description %></td>
-        <td><%= button_to "Select", projects_path, :method => "get", :proc_id =>p.id %></td>
+        <td><%=link_to "Select", project_path(@project.id.to_s+'/select_equipment', :proc_id => p.id) %></td>
       </tr> 
     <% end %>
    

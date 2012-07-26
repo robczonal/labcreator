@@ -1,5 +1,5 @@
 class Equipcat < ActiveRecord::Base
-  attr_accessible :name
+  attr_accessible :name, :ingredient_ids
   has_many :equipment
-  has_many :procedurexes, :through => :ingredients
+  has_many :ingredientss
 end

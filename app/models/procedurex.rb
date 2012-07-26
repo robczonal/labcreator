@@ -5,7 +5,8 @@ class Procedurex < ActiveRecord::Base
   #this is because we need to be able to have more than one piece of equipment of the same category
   #for 1 procedure e.g. 2 identical water baths
   
-  has_many :equipcats, :through => :ingredients
-  attr_accessible :astmip, :description, :name, :subtype, :testx_id, :equipcat_ids
+  has_many :ingredientss
+  attr_accessible :astmip, :description, :name, :subtype, :testx_id, :ingredient_ids
   validates :name, :presence => true
+  validates :textx_id, :presence => true
 end

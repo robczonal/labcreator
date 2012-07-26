@@ -1,0 +1,8 @@
+<%= render 'tabs1' %>
+<h2><%=@procedure.name %></h1>
+<% @procedure.ingredientss.each do |i| %>
+  <%=i.quantity %>
+  <%=i.equipcat.name %>
+  <% @cats=i.equipcat %>
+  <br />
+<% end %>
