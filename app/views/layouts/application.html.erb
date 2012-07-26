@@ -39,7 +39,7 @@
       <div class="breadbar">
       <% if admin_signed_in? %>
         <%=link_to "Projects", projects_path %>
-        <%= link_to "Administration", '/nulab_admin' %>
+        <%= link_to "Administration", rails_admin.dashboard_path %>
       <% else %>
       <%=link_to "Projects", projects_path %>
 	<% end %>  
