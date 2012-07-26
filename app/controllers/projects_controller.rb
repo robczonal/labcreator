@@ -62,6 +62,15 @@ class ProjectsController < ApplicationController
     end
   end
   
+  def select_procedure
+    @project = Project.find(params[:id])
+    @test = Testx.find(params[:test_id])
+    respond_to do |format|
+      format.html # show.html.erb
+      format.json { render json: @project }
+    end
+  end
+  
 
   # GET /projects/new
   # GET /projects/new.json
@@ -102,6 +111,7 @@ class ProjectsController < ApplicationController
   # PUT /projects/1.json
   def update
     params[:project][:analysis_ids]
+    
     @project = Project.find(params[:id])
 
     respond_to do |format|
@@ -125,5 +135,9 @@ class ProjectsController < ApplicationController
       format.html { redirect_to projects_url }
       format.json { head :no_content }
     end
+  end
+  
+  def delete_test
+    
   end
 end

@@ -1,0 +1,23 @@
+<h1>Listing equipcats</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @equipcats.each do |equipcat| %>
+  <tr>
+    <td><%= equipcat.name %></td>
+    <td><%= link_to 'Show', equipcat %></td>
+    <td><%= link_to 'Edit', edit_equipcat_path(equipcat) %></td>
+    <td><%= link_to 'Destroy', equipcat, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Equipcat', new_equipcat_path %>

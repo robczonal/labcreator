@@ -1,0 +1,31 @@
+<%= render 'tabs1' %>
+<h2><%=@test.name %></h1>
+<table>
+  <tr>
+    <th>Standard</th>
+    <th>Name</th>
+    <th>Subtype</th>
+    <th>Description</th>
+    <th></th>
+  </tr>
+  
+    <% @test.procedurexes.each do |p| %>
+      <tr>
+        <td><%=p.astmip%></td>
+        <td><%=p.name %></td>
+        <td><%=p.subtype %></td>
+        <td><%=p.description %></td>
+        <td><%= button_to "Select", projects_path, :method => "get", :proc_id =>p.id %></td>
+      </tr> 
+    <% end %>
+   
+</table>
+  
+  
+  
+  
+  
+  
+  
+  
+
