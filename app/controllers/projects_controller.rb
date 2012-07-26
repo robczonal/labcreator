@@ -62,6 +62,15 @@ class ProjectsController < ApplicationController
     end
   end
   
+  def select_procedure
+    @project = Project.find(params[:id])
+    @test = Testx.find(params[:test_id])
+    respond_to do |format|
+      format.html # show.html.erb
+      format.json { render json: @project }
+    end
+  end
+  
 
   # GET /projects/new
   # GET /projects/new.json

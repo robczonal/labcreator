@@ -22,7 +22,7 @@
               <% if t.analysis_id==an.id %>
                 <tr>
                   <td></td>
-                  <td><%=t.name %></td>
+                  <td><%=link_to t.name, project_path(@project.id.to_s+'/select_procedure', :test_id => t.id) %></td>
                   <td></td>
                   <td><%= check_box_tag "project[testx_ids][]", t.id, @project.testxes.include?(t)%></td>
                 </tr>

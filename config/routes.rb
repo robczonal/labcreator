@@ -9,18 +9,24 @@ Teamlab::Application.routes.draw do
 	match 'projects/:id/summary', :controller => 'projects', :action => 'summary'
 	match 'projects/:id/analyses', :controller => 'projects', :action => 'analyses'
 	match 'projects/:id/equip', :controller => 'projects', :action => 'equip'
+	match 'projects/:id/select_procedure', :controller => 'projects', :action => 'select_procedure'
 	resources :projects do
           resources :analyses
           resources :testxes
           resources :procedurexes
           resources :equipment
+          resources :equipcats
+          resources :ingredients
 	end
 	resources :analyses
 	resources :testxes
 	resources :procedurexes
 	resources :equipment
-	resources :procedurexes_equipment
-	resources :projects_analyses
+	resources :ingredients
+	resources :procedurexes_projects
+	resources :analyses_projects
+	resources :projects_testxes
+	resources :equipcats
 	
   # The priority is based upon order of creation:
   # first created -> highest priority.

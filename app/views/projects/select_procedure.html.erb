@@ -1,0 +1,5 @@
+<%= render 'tabs1' %>
+<h2><%=@test.name %></h1>
+<% @test.procedurexes.each do |p| %>
+  <p><%=p.name %></p>
+<% end %>
