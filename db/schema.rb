@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120724153903) do
+ActiveRecord::Schema.define(:version => 20120726105409) do
 
   create_table "admins", :force => true do |t|
     t.string   "email",              :default => "", :null => false
@@ -54,9 +54,13 @@ ActiveRecord::Schema.define(:version => 20120724153903) do
     t.integer  "equipcat_id"
   end
 
-  create_table "equipment_procedurexes", :id => false, :force => true do |t|
-    t.integer "procedurex_id"
-    t.integer "equipment_id"
+  create_table "ingredients", :force => true do |t|
+    t.text     "notes"
+    t.integer  "quantity"
+    t.integer  "procedurex_id"
+    t.integer  "equipcat_id"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
   end
 
   create_table "procedurexes", :force => true do |t|
@@ -70,6 +74,11 @@ ActiveRecord::Schema.define(:version => 20120724153903) do
   end
 
   add_index "procedurexes", ["testx_id"], :name => "index_procedurexes_on_testx_id"
+
+  create_table "procedurexes_projects", :id => false, :force => true do |t|
+    t.integer "procedurex_id"
+    t.integer "project_id"
+  end
 
   create_table "projects", :force => true do |t|
     t.string   "name"
