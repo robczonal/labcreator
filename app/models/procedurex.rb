@@ -9,5 +9,5 @@ class Procedurex < ActiveRecord::Base
   #:through doesn't work with the admin gem
   attr_accessible :astmip, :description, :name, :subtype, :testx_id, :ingredient_ids
   validates :name, :presence => true
-  validates :textx_id, :presence => true
+  validates :testx_id, :presence => true
 end
