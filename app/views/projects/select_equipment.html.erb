@@ -1,8 +1,14 @@
 <%= render 'tabs1' %>
 <h2><%=@procedure.name %></h1>
 <% @procedure.ingredientss.each do |i| %>
+  <hr class="divideline" />
   <%=i.quantity %>
-  <%=i.equipcat.name %>
-  <% @cats=i.equipcat %>
+  <%=i.equipcat.name %>  
+  <% i.equipcat.equipment.each do |e| %>
+    <p>Please select one from the following:</p>
+    <%=e.name+" "+e.equipcat.name %>
+    <br />
+  <% end %>
+
   <br />
 <% end %>

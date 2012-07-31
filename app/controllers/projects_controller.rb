@@ -74,6 +74,11 @@ class ProjectsController < ApplicationController
   def  select_equipment
     @project = Project.find(params[:id])
     @procedure = Procedurex.find(params[:proc_id])
+    @cats=Array.new
+    @procedure.ingredientss.each do |i|
+      @cats.push(i.equipcat)
+    end
+  
     #@procequip= @procedure.ingredients
     #x=0
     #@procequip.each do |a|
