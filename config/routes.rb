@@ -17,6 +17,7 @@ NuLab::Application.routes.draw do
 	resources :projects do
           resources :analyses
           resources :testxes
+          resources :comments
           resources :procedurexes do
             resources :ingredients
           end

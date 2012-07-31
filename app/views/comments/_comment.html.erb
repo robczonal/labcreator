@@ -1,0 +1,7 @@
+<p>
+<strong><%= comment.title %></strong> on <%= comment.created_at.strftime("%d/%m/%Y") %><br />
+<%= comment.body %><br />
+<%= link_to 'Destroy Comment', [comment.project, comment],
+               :confirm => 'Are you sure?',
+               :method => :delete %>
+</p>
