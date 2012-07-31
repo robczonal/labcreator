@@ -3,7 +3,7 @@
 <table>
   <tr>
     <th>Type</th>
-    <th>Number of Tests</th>
+    <th>Tests</th>
     <th>Status</th>
     <th>Uncheck to remove</th>
   </tr>
@@ -12,7 +12,7 @@
     <% @project.analyses.each do |an| %>
       <tr>
         <td><%=an.name %></td>
-        <td>count</td>
+        <td></td>
         <td>Not available</td>
         <td><%= check_box_tag "project[analysis_ids][]", an.id, @project.analyses.include?(an)%><br /></td>
       </tr>

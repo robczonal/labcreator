@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Teamlab</title>
+  <title>NuLab</title>
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= stylesheet_link_tag    "AddedStyling"%>  
   <%= javascript_include_tag "application" %>
@@ -39,11 +39,7 @@
       <div class="breadbar">
       <% if admin_signed_in? %>
         <%=link_to "Projects", projects_path %>
-        <%=link_to "Analyses", analyses_path %>
-        <%=link_to "Tests", testxes_path %>
-        <%=link_to "Procedures", procedurexes_path %>
-        <%=link_to "Equipment", :controller => "/equipment", :action => "index" %>
-	<%= link_to "Create new user", new_user_registration_path %> 
+        <%= link_to "Administration", "/nulab_admin" %>
       <% else %>
       <%=link_to "Projects", projects_path %>
 	<% end %>  
