@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120731105308) do
+ActiveRecord::Schema.define(:version => 20120801095227) do
 
   create_table "admins", :force => true do |t|
     t.string   "email",              :default => "", :null => false
@@ -30,6 +30,19 @@ ActiveRecord::Schema.define(:version => 20120731105308) do
     t.integer "project_id"
     t.integer "analysis_id"
   end
+
+  create_table "baskets", :force => true do |t|
+    t.integer  "project_id"
+    t.integer  "procedurex_id"
+    t.integer  "equipment_id"
+    t.integer  "quantity"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+  end
+
+  add_index "baskets", ["equipment_id"], :name => "index_baskets_on_equipment_id"
+  add_index "baskets", ["procedurex_id"], :name => "index_baskets_on_procedurex_id"
+  add_index "baskets", ["project_id"], :name => "index_baskets_on_project_id"
 
   create_table "comments", :force => true do |t|
     t.string   "title"

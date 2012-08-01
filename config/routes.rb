@@ -14,10 +14,15 @@ NuLab::Application.routes.draw do
 	match 'projects/:id/equip', :controller => 'projects', :action => 'equip'
 	match 'projects/:id/select_procedure', :controller => 'projects', :action => 'select_procedure'
 	match 'projects/:id/select_equipment', :controller => 'projects', :action => 'select_equipment'
+	match 'projects/:id/create_baskets', :controller => 'projects', :action => 'create_baskets', :via => :POST
 	resources :projects do
+          member do
+            put "create_baskets"
+          end
           resources :analyses
           resources :testxes
           resources :comments
+          resources :baskets
           resources :procedurexes do
             resources :ingredients
           end

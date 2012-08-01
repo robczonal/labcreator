@@ -1,4 +1,7 @@
 <%= render 'tabs1' %>
+
+
+
 <h2><%=@procedure.name %></h1>
 <% @procedure.ingredientss.each do |i| %>
   <hr class="divideline" />
@@ -6,9 +9,23 @@
   <%=i.equipcat.name %>  
   <% i.equipcat.equipment.each do |e| %>
     <p>Please select one from the following:</p>
-    <%=e.name+" "+e.equipcat.name %>
+      
+      <%=e.name+" "+e.equipcat.name %>
+      
     <br />
   <% end %>
 
   <br />
 <% end %>
+
+<%= form_for @project, :url => {:action => 'create_baskets'} do |f| %>
+    <%= f.fields_for :baskets do |b| %>
+      <p>
+      <%=b.text_field :quantity %>
+      <%=b.hidden_field 'procedurex_id', :value=>@procedure.id %>
+      <%=b.hidden_field 'equipment_id', :value=>1 %>
+      </p>
+    <% end %>
+  <%=f.submit %>
+<% end %>
+
