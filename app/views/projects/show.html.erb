@@ -17,10 +17,13 @@
 
 <p>
   <strong>Deadline:</strong>
-  <%= @project.deadline %>
+  <%= @project.deadline.strftime("%d/%m/%Y") %>
 </p>
 
-
+<h3>Comments</h3>
+<%= render @project.comments %>
+<%= render "comments/form" %>
+<br />
 <%= link_to 'Edit', edit_project_path(@project) %> |
 <%= link_to 'Back', projects_path %>
 

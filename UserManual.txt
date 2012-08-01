@@ -1,0 +1,5 @@
+User Manual
+
+Administrator
+
+Before adding ingredients to a procedure or equipment to a category, ensure that the appropriate category has been added to the database.

@@ -71,6 +71,22 @@ class ProjectsController < ApplicationController
     end
   end
   
+  def  select_equipment
+    @project = Project.find(params[:id])
+    @procedure = Procedurex.find(params[:proc_id])
+    #@procequip= @procedure.ingredients
+    #x=0
+    #@procequip.each do |a|
+     # @equipcat[x]=@procequip.equipcat
+      #x=x+1
+    #end
+    
+    
+    respond_to do |format|
+      format.html # show.html.erb
+      format.json { render json: @project }
+    end
+  end
 
   # GET /projects/new
   # GET /projects/new.json
