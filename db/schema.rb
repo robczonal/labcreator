@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120731152410) do
+ActiveRecord::Schema.define(:version => 20120802002836) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -46,6 +46,7 @@ ActiveRecord::Schema.define(:version => 20120731152410) do
   add_index "admin_users", ["email"], :name => "index_admin_users_on_email", :unique => true
   add_index "admin_users", ["reset_password_token"], :name => "index_admin_users_on_reset_password_token", :unique => true
 
+
   create_table "admins", :force => true do |t|
     t.string   "email",              :default => "", :null => false
     t.string   "encrypted_password", :default => "", :null => false
@@ -63,6 +64,19 @@ ActiveRecord::Schema.define(:version => 20120731152410) do
     t.integer "project_id"
     t.integer "analysis_id"
   end
+
+  create_table "baskets", :force => true do |t|
+    t.integer  "project_id"
+    t.integer  "procedurex_id"
+    t.integer  "equipment_id"
+    t.integer  "quantity"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+  end
+
+  add_index "baskets", ["equipment_id"], :name => "index_baskets_on_equipment_id"
+  add_index "baskets", ["procedurex_id"], :name => "index_baskets_on_procedurex_id"
+  add_index "baskets", ["project_id"], :name => "index_baskets_on_project_id"
 
   create_table "comments", :force => true do |t|
     t.string   "title"
@@ -91,6 +105,10 @@ ActiveRecord::Schema.define(:version => 20120731152410) do
     t.string   "picture"
     t.text     "description"
     t.text     "alert"
+<<<<<<< HEAD
+=======
+    t.string   "eqtype"
+>>>>>>> 6726dae848e6b202808d991caf8c6cbe42584c0f
     t.datetime "created_at",   :null => false
     t.datetime "updated_at",   :null => false
     t.integer  "equipcat_id"

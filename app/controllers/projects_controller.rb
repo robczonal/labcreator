@@ -74,20 +74,34 @@ class ProjectsController < ApplicationController
   def  select_equipment
     @project = Project.find(params[:id])
     @procedure = Procedurex.find(params[:proc_id])
-    #@procequip= @procedure.ingredients
-    #x=0
-    #@procequip.each do |a|
-     # @equipcat[x]=@procequip.equipcat
-      #x=x+1
-    #end
+    @ingreds =@procedure.ingredientss
     
+    x=@ingreds.count
+    @project.baskets.each do |b|
+      if b.procedurex_id=@procedure.id
+        x=x-1
+      end
+    end
+    
+    x.times{@project.baskets.build}
     
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @project }
     end
   end
-
+  
+  def create_baskets
+    @project = Project.find(params[:id])
+    if @project.update_attributes(params[:project])
+      redirect_to :action => 'analyses'
+    else
+      render :action => 'select_equipment'
+    end
+  end
+  
+  
+  
   # GET /projects/new
   # GET /projects/new.json
   def new

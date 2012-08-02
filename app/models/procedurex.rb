@@ -7,6 +7,7 @@ class Procedurex < ActiveRecord::Base
   has_and_belongs_to_many :projects
   has_many :ingredientss
   #:through doesn't work with the admin gem
+  has_many :baskets
   attr_accessible :astmip, :description, :name, :subtype, :testx_id, :ingredient_ids
   validates :name, :presence => true
   validates :testx_id, :presence => true
