@@ -83,9 +83,7 @@ class ProjectsController < ApplicationController
       end
     end
     
-    while x>0 do
-      x.times{@project.baskets.build}
-    end
+    x.times{@project.baskets.build}
     
     respond_to do |format|
       format.html # show.html.erb

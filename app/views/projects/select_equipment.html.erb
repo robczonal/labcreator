@@ -12,6 +12,7 @@
     
     <h4><%=@ingreds[y].equipcat.name+" x"+@ingreds[y].quantity.to_s %></h4>
     <p><em><%=@ingreds[y].notes %></em></p>
+
     <p>
     Quantity: <%=b.text_field :quantity, :default =>@ingreds[y].quantity %>
     <%=b.hidden_field 'procedurex_id', :value=>@procedure.id %>
