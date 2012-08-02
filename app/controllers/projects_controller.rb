@@ -55,6 +55,7 @@ class ProjectsController < ApplicationController
     
   def equip
     @project = Project.find(params[:id])
+    @procedurex = Procedurex.find(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
