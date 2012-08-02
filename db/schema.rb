@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120801095227) do
+ActiveRecord::Schema.define(:version => 20120802002836) do
 
   create_table "admins", :force => true do |t|
     t.string   "email",              :default => "", :null => false
@@ -71,7 +71,7 @@ ActiveRecord::Schema.define(:version => 20120801095227) do
     t.string   "picture"
     t.text     "description"
     t.text     "alert"
-    t.string   "type"
+    t.string   "eqtype"
     t.datetime "created_at",   :null => false
     t.datetime "updated_at",   :null => false
     t.integer  "equipcat_id"

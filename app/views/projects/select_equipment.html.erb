@@ -1,31 +1,39 @@
 <%= render 'tabs1' %>
 
-
-
 <h2><%=@procedure.name %></h1>
-<% @procedure.ingredientss.each do |i| %>
-  <hr class="divideline" />
-  <%=i.quantity %>
-  <%=i.equipcat.name %>  
-  <% i.equipcat.equipment.each do |e| %>
-    <p>Please select one from the following:</p>
-      
-      <%=e.name+" "+e.equipcat.name %>
-      
-    <br />
-  <% end %>
-
-  <br />
-<% end %>
 
 <%= form_for @project, :url => {:action => 'create_baskets'} do |f| %>
-    <%= f.fields_for :baskets do |b| %>
-      <p>
-      <%=b.text_field :quantity %>
-      <%=b.hidden_field 'procedurex_id', :value=>@procedure.id %>
-      <%=b.hidden_field 'equipment_id', :value=>1 %>
-      </p>
+
+  <% y=0 %>
+  
+  <%= f.fields_for :baskets do |b| %>
+
+    <hr class="divideline" />
+    
+    <h4><%=@ingreds[y].equipcat.name+" x"+@ingreds[y].quantity.to_s %></h4>
+    <p><em><%=@ingreds[y].notes %></em></p>
+    <p>
+    Quantity: <%=b.text_field :quantity, :default =>@ingreds[y].quantity %>
+    <%=b.hidden_field 'procedurex_id', :value=>@procedure.id %>
+    </p>
+    <p>Please select one from the following:</p>
+    <% @ingreds[y].equipcat.equipment.each do |e| %>
+      
+      <%=e.name %>
+      <%=b.radio_button :equipment_id, e.id %>
+      <br />
     <% end %>
-  <%=f.submit %>
+    
+    <br />
+    
+    <% y=y+1 %>
+    
+    <%= b.check_box :_destroy %>
+    <%= b.label :_destroy, "Remove from basket" %>
+    
+  <% end %>  
+
+  <%=f.submit "Add Equipment" %>
+  
 <% end %>
 

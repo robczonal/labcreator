@@ -74,14 +74,17 @@ class ProjectsController < ApplicationController
   def  select_equipment
     @project = Project.find(params[:id])
     @procedure = Procedurex.find(params[:proc_id])
-    x=true
+    @ingreds =@procedure.ingredientss
+    
+    x=@ingreds.count
     @project.baskets.each do |b|
       if b.procedurex_id=@procedure.id
-        x=false
+        x=x-1
       end
     end
-    while x==true do
-      (@procedure.ingredientss.count).times{@project.baskets.build}
+    
+    while x>0 do
+      x.times{@project.baskets.build}
     end
     
     respond_to do |format|
@@ -98,6 +101,9 @@ class ProjectsController < ApplicationController
       render :action => 'select_equipment'
     end
   end
+  
+  
+  
   # GET /projects/new
   # GET /projects/new.json
   def new

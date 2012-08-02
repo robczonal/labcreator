@@ -6,5 +6,5 @@ class Project < ActiveRecord::Base
   has_many :comments, :dependent => :destroy
   has_many :baskets
   validates :name, :presence => true
-  accepts_nested_attributes_for :baskets, :reject_if => lambda { |a| a[:quantity].blank? }
+  accepts_nested_attributes_for :baskets, :reject_if => lambda { |a| a[:quantity].blank? }, :allow_destroy => true
 end
