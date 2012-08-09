@@ -20,6 +20,43 @@ RailsAdmin.config do |config|
   # or for a dynamic name:
   # config.main_app_name = Proc.new { |controller| [Rails.application.engine_name.titleize, controller.params['action'].titleize] }
 
+  config.model Basket do
+  visible false
+end
+
+  config.model Comment do
+  visible false
+end
+
+config.model Equipcat do
+  label "Equipment Category" 
+  label_plural "Equipment Categories"
+  weight -1
+end
+
+config.model Procedurex do
+  label "Procedure" 
+  label_plural "Procedures"
+  weight -2
+end
+
+config.model Testx do
+  label "Test" 
+  label_plural "Tests"
+  weight -3
+end
+
+config.model Project do
+  weight -6
+end
+
+config.model Analysis do
+  weight -3
+end
+
+config.model Admin do
+  weight 1
+end
 
   #  ==> Global show view settings
   # Display empty fields in show views

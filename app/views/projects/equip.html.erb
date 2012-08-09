@@ -1,2 +1,25 @@
 <%= render 'tabs1' %>
 <h2>Equipment</h2>
+<table>
+  <tr>
+    <th>Procedure</th>
+    <th>Equipment</th>
+    <th>Type</th>
+    <th>Quantity</th>
+    <th>Uncheck to remove</th>
+  </tr>
+
+<% if @project.baskets.count>0 %>
+    <% @project.baskets.each do |an|%>
+  <tr>
+        <td><%= an.procedurex.name%></td>
+        <td><%= an.equipment.equipcat.name%></td>
+	<td><%= an.equipment.name%></td>
+        <td><%= an.quantity %></td>
+	<td> </td>
+  </tr>
+    
+    
+<% end %>
+<% end %>
+</table>
