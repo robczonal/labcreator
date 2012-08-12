@@ -2,39 +2,40 @@
 
 <h2><%=@procedure.name %></h1>
 
-<%= form_for @project, :url => {:action => 'create_baskets'} do |f| %>
-
-  <% y=0 %>
-  
-  <%= f.fields_for :baskets do |b| %>
-
-    <hr class="divideline" />
-    
-    <h4><%=@ingreds[y].equipcat.name+" x"+@ingreds[y].quantity.to_s %></h4>
-    <p><em><%=@ingreds[y].notes %></em></p>
-
-    <p>
-    Quantity: <%=b.text_field :quantity, :default =>@ingreds[y].quantity %>
-    <%=b.hidden_field 'procedurex_id', :value=>@procedure.id %>
-    </p>
-    <p>Please select one from the following:</p>
-    <% @ingreds[y].equipcat.equipment.each do |e| %>
+<% if @procedure.ingredientss[0].equipcat then %>
+  <%= form_for @project, :url => {:action => 'create_baskets'} do |f| %>
+      <% y=0 %>
       
-      <%=e.name %>
-      <%=b.radio_button :equipment_id, e.id %>
-      <br />
-    <% end %>
+        <%= f.fields_for :baskets, @rightbaskets do |b| %>
+          <% n=@ingreds[y] %>
+          <% y=y+1 %>
+          <hr class="divideline" />
     
-    <br />
-    
-    <% y=y+1 %>
-    
-    <%= b.check_box :_destroy %>
-    <%= b.label :_destroy, "Remove from basket" %>
-    
-  <% end %>  
+          <h4><%=n.equipcat.name+" x"+n.quantity.to_s %></h4>
+          <%= b.check_box :_destroy %>
+          <%= b.label :_destroy, "Remove from basket" %><br />
+          
+          <p><em><%=n.notes %></em></p>
 
-  <%=f.submit "Add Equipment" %>
+          <%= b.label :quantity %><br />
+          <%= b.text_field :quantity, :default =>n.quantity %>
+          
+          <%=b.hidden_field 'procedurex_id', :value=>@procedure.id %>
+          <%=b.hidden_field 'project_id', :value=>@project.id %>
+      
+          <p>Please select one from the following:</p>
+      
+          <% n.equipcat.equipment.each do |e| %>
+            <%=e.name %>
+            <%=b.radio_button :equipment_id, e.id %>
+            <br />
+          <% end %>
+
+        <% end %>
+    <%=f.submit "Add Equipment" %>
+  <% end %>
   
+<% else %>
+  <%="Sorry, no ingredients are associated with this procedure" %>
 <% end %>
 

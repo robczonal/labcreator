@@ -74,18 +74,25 @@ class ProjectsController < ApplicationController
   end
   
   def  select_equipment
-    @project = Project.find(params[:id])
+    @project = Project.find(params[:id])  
     @procedure = Procedurex.find(params[:proc_id])
     @ingreds =@procedure.ingredientss
-    
+    @rightbaskets=Array.new
     x=@ingreds.count
     @project.baskets.each do |b|
-      if b.procedurex_id=@procedure.id
+      if b.procedurex==@procedure then
         x=x-1
+        @rightbaskets.push(b)
       end
     end
     
-    x.times{@project.baskets.build}
+    #a=Basket.where(:procedurex_id =>:proc_id, :project_id =>:id)
+    #b=Basket.where(:procedurex_id => nil)
+    #@rightbaskets=a+b
+    x.times do |pl|
+      basket=Basket.create(:procedurex_id =>:proc_id, :project_id =>:id)
+      @rightbaskets.push(basket)
+    end
     
     respond_to do |format|
       format.html # show.html.erb
@@ -95,11 +102,13 @@ class ProjectsController < ApplicationController
   
   def create_baskets
     @project = Project.find(params[:id])
+    
     if @project.update_attributes(params[:project])
-      redirect_to :action => 'analyses'
+        redirect_to :action => 'equip'
     else
-      render :action => 'select_equipment'
-    end
+        format.html { render action: "select_equipment" }
+    end   
+
   end
   
   
