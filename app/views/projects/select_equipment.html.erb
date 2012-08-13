@@ -11,7 +11,7 @@
           <% y=y+1 %>
           <hr class="divideline" />
     
-          <h4><%=n.equipcat.name+" x"+n.quantity.to_s %></h4>
+          <h4><%=n.equipcat.name+" x"+n.quantity.to_s %><%=n.unit%></h4>
           
             <%= b.check_box :_destroy %>
             <%= b.label :_destroy, "Remove from basket" %><br />
