@@ -39,6 +39,7 @@ class ProjectsController < ApplicationController
     procs=Array.new
     @totsize=0
     @totprice=0
+    @totequip=(Basket.all).count
     
     @project.baskets.each do |b|    
       if not procs.include?(b.procedurex_id)
@@ -220,6 +221,12 @@ class ProjectsController < ApplicationController
       @project.analyses.delete(@an)
     end
     redirect_to :action => 'analyses'
+  end
+  
+  def delete_basket
+    @basket = Basket.find(params[:bask_id])
+    @basket.destroy
+    redirect_to :action =>'equip'
   end
   
 end

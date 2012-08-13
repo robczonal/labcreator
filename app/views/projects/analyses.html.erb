@@ -5,16 +5,16 @@
     <th>Type</th>
     <th>Tests</th>
     <th>Status</th>
-    <th>Uncheck to remove</th>
+    <th>Remove</th>
   </tr>
 <%=form_for(@project) do |f| %>  
   <% if @project.analyses.count>0 %>
     <% @project.analyses.each do |an| %>
       <tr>
         <td><%=an.name %></td>
-        <td></td>
+        <td><%= check_box_tag "project[analysis_ids][]", an.id, @project.analyses.include?(an), :class=>"hideit" %></td>
         <td>Not available</td>
-        <td><%= check_box_tag "project[analysis_ids][]", an.id, @project.analyses.include?(an) %><%=link_to "Delete", project_path(@project.id.to_s+'/delete_ana', :ana_id => an.id) %><br /></td>
+        <td><%=link_to "Delete", project_path(@project.id.to_s+'/delete_ana', :ana_id => an.id), :confirm=> "Are you sure? This will delete your associated tests." %><br /></td>
       </tr>
         
             <%@project.testxes.each do |t|%>
@@ -22,9 +22,9 @@
               <% if t.analysis_id==an.id %>
                 <tr>
                   <td></td>
-                  <td><%=link_to t.name, project_path(@project.id.to_s+'/select_procedure', :test_id => t.id) %></td>
+                  <td><%=link_to t.name, project_path(@project.id.to_s+'/select_procedure', :test_id => t.id)%></td>
                   <td></td>
-                  <td><%=link_to "Delete", project_path(@project.id.to_s+'/delete_test', :test_id => t.id) %></td>
+                  <td><%=link_to "Delete", project_path(@project.id.to_s+'/delete_test', :test_id => t.id), :confirm=> "Are you sure?" %></td>
                 </tr>
               <% end %>
             <%end%>

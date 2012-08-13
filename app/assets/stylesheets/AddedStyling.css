@@ -33,3 +33,11 @@
 .equipimcell {
     width:200px;
 }
+
+.procdesc {
+    width:400px;
+}
+
+.hideit {
+    visibility: hidden;
+}

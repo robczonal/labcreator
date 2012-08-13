@@ -10,6 +10,7 @@
     <th>Quantity</th>
     <th>Size</th>
     <th>Price</th>
+    <th></th>
     <th>Remove</th>
   </tr>
 
@@ -17,14 +18,15 @@
   <% @project.baskets.each do |an|%>
   <tr>
         <td><%= an.procedurex.testx.analysis.name%></td>
-        <td><%= an.procedurex.testx.name%></td>
-        <td><%= an.procedurex.name%></td>
+        <td><%=link_to an.procedurex.testx.name, project_path(@project.id.to_s+'/select_procedure', :test_id => an.procedurex.testx.id) %></td>
+        <td><%=link_to an.procedurex.name, project_path(@project.id.to_s+'/select_equipment', :proc_id => an.procedurex.id) %></td>
         <td><%= an.equipment.equipcat.name%></td>
 	<td><%= an.equipment.name%></td>
         <td><%= an.quantity %></td>
         <td><%= an.equipment.height.round(0)%>x<%= an.equipment.width.round(0)%>x<%= an.equipment.depth.round(0)%>mm</td>
         <td>&pound;<%=if an.equipment.price.nil? or an.equipment.price==0 then "Not available" else sprintf "%.02f", an.equipment.price.round(2) end%></td>
-	<td> </td>
+        <td></td>
+	<td><%= link_to 'Destroy', project_path(@project.id.to_s+'/delete_basket', :bask_id => an.id), :confirm=> "Are you sure?" %> </td>
   </tr>    
     
   <% end %>

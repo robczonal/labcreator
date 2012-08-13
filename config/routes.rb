@@ -15,7 +15,8 @@ NuLab::Application.routes.draw do
 	match 'projects/:id/select_procedure', :controller => 'projects', :action => 'select_procedure'
 	match 'projects/:id/select_equipment', :controller => 'projects', :action => 'select_equipment'
 	match 'projects/:id/delete_test', :controller => 'projects', :action => 'delete_test'
-	match 'projects/:id/delete_ana', :controller => 'projects', :action => 'delete_ana'	
+	match 'projects/:id/delete_ana', :controller => 'projects', :action => 'delete_ana'
+	match 'projects/:id/delete_basket', :controller => 'projects', :action => 'delete_basket'	
 	match 'projects/:id/create_baskets', :controller => 'projects', :action => 'create_baskets', :via => :POST
 	resources :projects do
           member do

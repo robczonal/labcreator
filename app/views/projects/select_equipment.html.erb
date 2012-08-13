@@ -1,6 +1,6 @@
 <%= render 'tabs1' %>
 
-<h2><%=@procedure.name %></h1>
+<h2><%=@procedure.name %></h2><%=link_to "Back to "+@procedure.testx.name, project_path(@project.id.to_s+'/select_procedure', :test_id => @procedure.testx_id) %>
 
 <% if @procedure.ingredientss[0].equipcat then %>
   <%= form_for @project, :url => {:action => 'create_baskets'} do |f| %>

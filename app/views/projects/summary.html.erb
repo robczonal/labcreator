@@ -5,7 +5,7 @@
 <table>
   <tr>
     <th>Type</th>
-    <th>No. Procedures</th>
+    <th>No. Tests</th>
     <th>Status</th>
   </tr>
   <% if @project.analyses.count>0 %>
@@ -14,7 +14,7 @@
     <%y=y+1%>
       <tr>
         <td><%= an.name%></td>
-        <td></td>
+        <td><%=an.testxes.count%></td>
         <td>Not available</td>
       </tr>
     <% end %>
@@ -24,5 +24,6 @@
 </table>
 
 <p><strong>Total Procedures: </strong><%=@totprocs %></p>
+<p><strong>Total Equipment: </strong><%=@totequip %></p>
 <p><strong>Total Surface Space: </strong><%=@totsize %> square mm</p>
 <p><strong>Total Cost: </strong>&pound;<%=@totprice%></p>
