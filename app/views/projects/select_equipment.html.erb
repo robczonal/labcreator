@@ -12,9 +12,10 @@
           <hr class="divideline" />
     
           <h4><%=n.equipcat.name+" x"+n.quantity.to_s %></h4>
-          <%= b.check_box :_destroy %>
-          <%= b.label :_destroy, "Remove from basket" %><br />
           
+            <%= b.check_box :_destroy %>
+            <%= b.label :_destroy, "Remove from basket" %><br />
+            
           <p><em><%=n.notes %></em></p>
 
           <%= b.label :quantity %><br />
@@ -24,18 +25,39 @@
           <%=b.hidden_field 'project_id', :value=>@project.id %>
       
           <p>Please select one from the following:</p>
-      
-          <% n.equipcat.equipment.each do |e| %>
-            <%=e.name %>
-            <%=b.radio_button :equipment_id, e.id %>
-            <br />
-          <% end %>
+          
+          <table class="equiptab" border="1" cellpadding="3" cellspacing="0">
+            <% n.equipcat.equipment.each do |e| %>
+              <tr>
+                <td rowspan="3" class="equipcheckcell">[]</td>
+                <td colspan="2"><h4><%=e.name %></h4></td>
+                <td rowspan="3" class="equipcheckcell"><%=b.radio_button :equipment_id, e.id %></td>  
+              </tr>
+              <tr>
+                <td class="equipimcell" ><img src="<%=e.picture%>" width="200" alt="<%=e.name %>" /></td>
+                <td class="equiplicell">
+                  <ul>
+                    <li>Size: <%=e.height%>x<%=e.width%>x<%=e.depth%>mm</li>
+                    <li>Availability: <%=e.availability%></li>
+                    <li>Price: &pound;<%=if e.price.nil? or e.price==0 then "Not available" else e.price.to_s end%></li>
+                    <li>Alerts:<%=e.alert%></li>
+                  </ul>
+                  <br />
+                  <p><a href="<%=e.externallink%>"><%=e.externallink%></a></p>
+                </td>
+              </tr>
+              <tr>
+                <td colspan="2"><p><%=e.description%></p></td>
+              </tr>             
+            <% end %>
+          </table>
 
         <% end %>
-    <%=f.submit "Add Equipment" %>
+        <br />
+    <%=f.submit "Update Equipment" %>
   <% end %>
   
 <% else %>
-  <%="Sorry, no ingredients are associated with this procedure" %>
+  <%="Sorry, no equipment is associated with this procedure" %>
 <% end %>
 

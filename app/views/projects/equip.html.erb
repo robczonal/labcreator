@@ -1,25 +1,42 @@
 <%= render 'tabs1' %>
 <h2>Equipment</h2>
-<table>
+<table cellspacing="0" cellpadding="4">
   <tr>
+    <th>Analysis</th>
+    <th>Test</th>
     <th>Procedure</th>
     <th>Equipment</th>
     <th>Type</th>
     <th>Quantity</th>
+    <th>Size</th>
+    <th>Price</th>
     <th>Remove</th>
   </tr>
 
 <% if @project.baskets.count>0 %>
-    <% @project.baskets.each do |an|%>
+  <% @project.baskets.each do |an|%>
   <tr>
+        <td><%= an.procedurex.testx.analysis.name%></td>
+        <td><%= an.procedurex.testx.name%></td>
         <td><%= an.procedurex.name%></td>
         <td><%= an.equipment.equipcat.name%></td>
 	<td><%= an.equipment.name%></td>
         <td><%= an.quantity %></td>
+        <td><%= an.equipment.height.round(0)%>x<%= an.equipment.width.round(0)%>x<%= an.equipment.depth.round(0)%>mm</td>
+        <td>&pound;<%=if an.equipment.price.nil? or an.equipment.price==0 then "Not available" else sprintf "%.02f", an.equipment.price.round(2) end%></td>
 	<td> </td>
-  </tr>
-    
+  </tr>    
     
   <% end %>
 <% end %>
+  <tr align="right">
+    <td colspan="3"></td>
+    <th colspan="4">Total Space(width X depth):</th>
+    <td colspan="2" align="left"><%=@totsize.round(0)%> square mm</td>
+  </tr>
+  <tr align="right">
+    <td colspan="3"></td>
+    <th colspan="4">Total Price:</th>
+    <td colspan="2" align="left">&pound;<%=@totprice%></td>
+  </tr>
 </table>

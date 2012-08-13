@@ -17,6 +17,19 @@
 }
 
 .header {
-
     min-height: 60px;
+}
+
+
+.equiptab {
+
+}
+.equipcheckcall {
+    width:15px;
+}
+.equiplicell {
+    width:400px;
+}
+.equipimcell {
+    width:200px;
 }
