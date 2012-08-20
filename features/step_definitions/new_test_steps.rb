@@ -7,7 +7,7 @@ Given /^I am logged in as "([^\"]*)" with password "([^\"]*)"$/ do |email, passw
 
 When /^I go to the new test page$/ do
     visit('/testxes/new') 
-   page.should have_content("New testx")
+
 end
 
 Given /^I write in "(.*?)" with "(.*?)"$/ do |value, text|
