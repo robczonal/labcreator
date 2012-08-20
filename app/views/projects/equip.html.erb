@@ -1,25 +1,44 @@
 <%= render 'tabs1' %>
 <h2>Equipment</h2>
-<table>
+<table cellspacing="0" cellpadding="4">
   <tr>
+    <th>Analysis</th>
+    <th>Test</th>
     <th>Procedure</th>
     <th>Equipment</th>
     <th>Type</th>
     <th>Quantity</th>
-    <th>Uncheck to remove</th>
+    <th>Size</th>
+    <th>Price</th>
+    <th></th>
+    <th>Remove</th>
   </tr>
 
 <% if @project.baskets.count>0 %>
-    <% @project.baskets.each do |an|%>
+  <% @project.baskets.each do |an|%>
   <tr>
-        <td><%= an.procedurex.name%></td>
+        <td><%= an.procedurex.testx.analysis.name%></td>
+        <td><%=link_to an.procedurex.testx.name, project_path(@project.id.to_s+'/select_procedure', :test_id => an.procedurex.testx.id) %></td>
+        <td><%=link_to an.procedurex.name, project_path(@project.id.to_s+'/select_equipment', :proc_id => an.procedurex.id) %></td>
         <td><%= an.equipment.equipcat.name%></td>
 	<td><%= an.equipment.name%></td>
         <td><%= an.quantity %></td>
-	<td> </td>
+        <td><%= an.equipment.height.round(0)%>x<%= an.equipment.width.round(0)%>x<%= an.equipment.depth.round(0)%>mm</td>
+        <td>&pound;<%=if an.equipment.price.nil? or an.equipment.price==0 then "Not available" else sprintf "%.02f", an.equipment.price.round(2) end%></td>
+        <td></td>
+	<td><%= link_to 'Destroy', project_path(@project.id.to_s+'/delete_basket', :bask_id => an.id), :confirm=> "Are you sure?" %> </td>
+  </tr>    
+    
+  <% end %>
+<% end %>
+  <tr align="right">
+    <td colspan="3"></td>
+    <th colspan="4">Total Space(width X depth):</th>
+    <td colspan="2" align="left"><%=@totsize.round(0)%> square mm</td>
   </tr>
-    
-    
-<% end %>
-<% end %>
+  <tr align="right">
+    <td colspan="3"></td>
+    <th colspan="4">Total Price:</th>
+    <td colspan="2" align="left">&pound;<%=@totprice%></td>
+  </tr>
 </table>

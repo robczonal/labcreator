@@ -1,40 +1,63 @@
 <%= render 'tabs1' %>
 
-<h2><%=@procedure.name %></h1>
+<h2><%=@procedure.name %></h2><%=link_to "Back to "+@procedure.testx.name, project_path(@project.id.to_s+'/select_procedure', :test_id => @procedure.testx_id) %>
 
-<%= form_for @project, :url => {:action => 'create_baskets'} do |f| %>
-
-  <% y=0 %>
-  
-  <%= f.fields_for :baskets do |b| %>
-
-    <hr class="divideline" />
-    
-    <h4><%=@ingreds[y].equipcat.name+" x"+@ingreds[y].quantity.to_s %></h4>
-    <p><em><%=@ingreds[y].notes %></em></p>
-
-    <p>
-    Quantity: <%=b.text_field :quantity, :default =>@ingreds[y].quantity %>
-    <%=b.hidden_field 'procedurex_id', :value=>@procedure.id %>
-    </p>
-    <p>Please select one from the following:</p>
-    <% @ingreds[y].equipcat.equipment.each do |e| %>
+<% if @procedure.ingredientss[0].equipcat then %>
+  <%= form_for @project, :url => {:action => 'create_baskets'} do |f| %>
+      <% y=0 %>
       
-      <%=e.name %>
-      <%=b.radio_button :equipment_id, e.id %>
-      <br />
-    <% end %>
+        <%= f.fields_for :baskets, @rightbaskets do |b| %>
+          <% n=@ingreds[y] %>
+          <% y=y+1 %>
+          <hr class="divideline" />
     
-    <br />
-    
-    <% y=y+1 %>
-    
-    <%= b.check_box :_destroy %>
-    <%= b.label :_destroy, "Remove from basket" %>
-    
-  <% end %>  
+          <h4><%=n.equipcat.name+" x"+n.quantity.to_s %><%=n.unit%></h4>
+          
+            <%= b.check_box :_destroy %>
+            <%= b.label :_destroy, "Remove from basket" %><br />
+            
+          <p><em><%=n.notes %></em></p>
 
-  <%=f.submit "Add Equipment" %>
+          <%= b.label :quantity %><br />
+          <%= b.text_field :quantity, :default =>n.quantity %>
+          
+          <%=b.hidden_field 'procedurex_id', :value=>@procedure.id %>
+          <%=b.hidden_field 'project_id', :value=>@project.id %>
+      
+          <p>Please select one from the following:</p>
+          
+          <table class="equiptab" border="1" cellpadding="3" cellspacing="0">
+            <% n.equipcat.equipment.each do |e| %>
+              <tr>
+                <td rowspan="3" class="equipcheckcell">[]</td>
+                <td colspan="2"><h4><%=e.name %></h4></td>
+                <td rowspan="3" class="equipcheckcell"><%=b.radio_button :equipment_id, e.id %></td>  
+              </tr>
+              <tr>
+                <td class="equipimcell" ><img src="<%=e.picture%>" width="200" alt="<%=e.name %>" /></td>
+                <td class="equiplicell">
+                  <ul>
+                    <li>Size: <%=e.height%>x<%=e.width%>x<%=e.depth%>mm</li>
+                    <li>Availability: <%=e.availability%></li>
+                    <li>Price: &pound;<%=if e.price.nil? or e.price==0 then "Not available" else e.price.to_s end%></li>
+                    <li>Alerts:<%=e.alert%></li>
+                  </ul>
+                  <br />
+                  <p><a href="<%=e.externallink%>"><%=e.externallink%></a></p>
+                </td>
+              </tr>
+              <tr>
+                <td colspan="2"><p><%=e.description%></p></td>
+              </tr>             
+            <% end %>
+          </table>
+
+        <% end %>
+        <br />
+    <%=f.submit "Update Equipment" %>
+  <% end %>
   
+<% else %>
+  <%="Sorry, no equipment is associated with this procedure" %>
 <% end %>
 

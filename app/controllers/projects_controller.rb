@@ -36,7 +36,26 @@ class ProjectsController < ApplicationController
 
   def summary
     @project = Project.find(params[:id])
-
+    procs=Array.new
+    @totsize=0
+    @totprice=0
+    @totequip=(Basket.find_all_by_project_id(@project)).count
+    
+    @project.baskets.each do |b|    
+      if not procs.include?(b.procedurex_id)
+        procs.push(b.procedurex_id)
+      end
+      if not b.equipment.price.nil?
+        @totprice=@totprice+b.equipment.price
+      end
+      if (not b.equipment.width.nil?) and (not b.equipment.depth.nil?)
+        @totsize=@totsize+ (b.equipment.width*b.equipment.depth)
+      end    
+    end
+    
+    @totprocs=procs.count
+    @totprice=sprintf "%.02f", @totprice.round(2)
+      
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @project }
@@ -55,7 +74,18 @@ class ProjectsController < ApplicationController
     
   def equip
     @project = Project.find(params[:id])
-
+    @totprice=0
+    @totsize=0
+    @project.baskets.each do |p|
+      if not p.equipment.price.nil?
+        @totprice=@totprice+p.equipment.price
+      end
+      if (not p.equipment.width.nil?) and (not p.equipment.depth.nil?)
+        @totsize=@totsize+ (p.equipment.width*p.equipment.depth)
+      end
+    end
+    @totprice=@totprice.round(2)
+    @totprice=sprintf "%.02f", @totprice
     
     respond_to do |format|
       format.html # show.html.erb
@@ -74,18 +104,22 @@ class ProjectsController < ApplicationController
   end
   
   def  select_equipment
-    @project = Project.find(params[:id])
+    @project = Project.find(params[:id])  
     @procedure = Procedurex.find(params[:proc_id])
     @ingreds =@procedure.ingredientss
-    
+    @rightbaskets=Array.new
     x=@ingreds.count
     @project.baskets.each do |b|
-      if b.procedurex_id=@procedure.id
+      if b.procedurex==@procedure then
         x=x-1
+        @rightbaskets.push(b)
       end
     end
     
-    x.times{@project.baskets.build}
+    x.times do |pl|
+      basket=Basket.create(:procedurex_id =>:proc_id, :project_id =>:id)
+      @rightbaskets.push(basket)
+    end
     
     respond_to do |format|
       format.html # show.html.erb
@@ -95,11 +129,13 @@ class ProjectsController < ApplicationController
   
   def create_baskets
     @project = Project.find(params[:id])
+    
     if @project.update_attributes(params[:project])
-      redirect_to :action => 'analyses'
+        redirect_to :action => 'equip'
     else
-      render :action => 'select_equipment'
-    end
+        format.html { render action: "select_equipment" }
+    end   
+
   end
   
   
@@ -148,7 +184,7 @@ class ProjectsController < ApplicationController
 
     respond_to do |format|
       if @project.update_attributes(params[:project])
-        format.html { redirect_to @project, notice: 'Project was successfully updated.' }
+        format.html { redirect_to :action => 'analyses', notice: 'Project was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
@@ -170,6 +206,27 @@ class ProjectsController < ApplicationController
   end
   
   def delete_test
-    
+    @project = Project.find(params[:id])
+    @testk= @project.testxes.find(params[:test_id])
+    if @testk
+      @project.testxes.delete(@testk)
+    end
+    redirect_to :action => 'analyses'
   end
+  
+  def delete_ana
+    @project = Project.find(params[:id])
+    @an= @project.analyses.find(params[:ana_id])
+    if @an
+      @project.analyses.delete(@an)
+    end
+    redirect_to :action => 'analyses'
+  end
+  
+  def delete_basket
+    @basket = Basket.find(params[:bask_id])
+    @basket.destroy
+    redirect_to :action =>'equip'
+  end
+  
 end

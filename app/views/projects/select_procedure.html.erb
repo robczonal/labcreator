@@ -1,6 +1,6 @@
 <%= render 'tabs1' %>
 <h2><%=@test.name %></h1>
-<table>
+<table cellpadding="4" cellspacing="0">
   <tr>
     <th>Standard</th>
     <th>Name</th>
@@ -12,10 +12,10 @@
     <% @test.procedurexes.each do |p| %>
       <tr>
         <td><%=p.astmip%></td>
-        <td><%=p.name %></td>
+        <td><%=link_to p.name, project_path(@project.id.to_s+'/select_equipment', :proc_id => p.id) %></td>
         <td><%=p.subtype %></td>
-        <td><%=p.description %></td>
-        <td><%=link_to "Select", project_path(@project.id.to_s+'/select_equipment', :proc_id => p.id) %></td>
+        <td class="procdesc"><%=p.description %></td>
+        <td></td>
       </tr> 
     <% end %>
    

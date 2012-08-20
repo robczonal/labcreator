@@ -1,7 +1,7 @@
 class Ingredients < ActiveRecord::Base
   belongs_to :equipcat
   belongs_to :procedurex
-  attr_accessible :notes, :quantity, :procedurex_id, :equipcat_id, :ingredients_id
+  attr_accessible :notes, :quantity, :procedurex_id, :equipcat_id, :ingredients_id, :unit
   validates :equipcat_id, :presence => true
   validates :procedurex_id, :presence => true
   validates :quantity, :presence => true

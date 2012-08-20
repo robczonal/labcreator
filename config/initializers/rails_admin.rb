@@ -58,6 +58,13 @@ config.model Admin do
   weight 1
 end
 
+config.model Equiptype do
+  label "Equipment Type"
+  label_plural "Equipment Types"
+  weight
+  visible false
+end
+
   #  ==> Global show view settings
   # Display empty fields in show views
   # config.compact_show_view = false

@@ -5,14 +5,16 @@
 <table>
   <tr>
     <th>Type</th>
-    <th>Number of Tests</th>
+    <th>No. Tests</th>
     <th>Status</th>
   </tr>
   <% if @project.analyses.count>0 %>
+    <% y=0 %>
     <% @project.analyses.each do |an|%>
+    <%y=y+1%>
       <tr>
         <td><%= an.name%></td>
-        <td>an.testx.count</td>
+        <td><%=an.testxes.count%></td>
         <td>Not available</td>
       </tr>
     <% end %>
@@ -21,5 +23,7 @@
   <% end %>
 </table>
 
-<p><strong>Total Space:</strong>sum of all @project.equipment.width*depth</p>
-<p><strong>Total Cost:</strong>sum of all @project.equipment.price</p>
+<p><strong>Total Procedures: </strong><%=@totprocs %></p>
+<p><strong>Total Equipment: </strong><%=@totequip %></p>
+<p><strong>Total Surface Space: </strong><%=@totsize %> square mm</p>
+<p><strong>Total Cost: </strong>&pound;<%=@totprice%></p>
