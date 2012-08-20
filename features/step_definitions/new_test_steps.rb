@@ -5,17 +5,16 @@ Given /^I am logged in as "([^\"]*)" with password "([^\"]*)"$/ do |email, passw
       click_button "Sign in"  
     end  
 
-When /^I go to the new test page$/ do
+Given /^I go to the new test page$/ do
     visit('/testxes/new') 
-
 end
 
-Given /^I write in "(.*?)" with "(.*?)"$/ do |value, text|
-  value = 'testx_'+value.downcase
+When /^I write in "(.*?)" with "(.*?)"$/ do |value, text|
+  value = 'Name'
   fill_in(value,:with=>text)
 end
 
-When /^I press test "(.*?)"$/ do |create|
+And /^I press test "(.*?)"$/ do |create|
   click_button('Create Testx')
 end
 
