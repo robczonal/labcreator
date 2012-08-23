@@ -23,7 +23,7 @@
                 <tr>
                   <td></td>
                   <td><%=link_to t.name, project_path(@project.id.to_s+'/select_procedure', :test_id => t.id)%></td>
-                  <td></td>
+                  <td><%= check_box_tag "project[testx_ids][]", t.id, @project.testxes.include?(t), :class=>"hideit" %></td>
                   <td><%=link_to "Delete", project_path(@project.id.to_s+'/delete_test', :test_id => t.id), :confirm=> "Are you sure?" %></td>
                 </tr>
               <% end %>
