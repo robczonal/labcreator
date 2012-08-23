@@ -46,10 +46,10 @@ class ProjectsController < ApplicationController
         procs.push(b.procedurex_id)
       end
       if not b.equipment.price.nil?
-        @totprice=@totprice+b.equipment.price
+        @totprice=@totprice+(b.equipment.price*b.quantity)
       end
       if (not b.equipment.width.nil?) and (not b.equipment.depth.nil?)
-        @totsize=@totsize+ (b.equipment.width*b.equipment.depth)
+        @totsize=@totsize+ (b.equipment.width*b.equipment.depth*b.quantity)
       end    
     end
     
@@ -78,10 +78,10 @@ class ProjectsController < ApplicationController
     @totsize=0
     @project.baskets.each do |p|
       if not p.equipment.price.nil?
-        @totprice=@totprice+p.equipment.price
+        @totprice=@totprice+(p.equipment.price*p.quantity)
       end
       if (not p.equipment.width.nil?) and (not p.equipment.depth.nil?)
-        @totsize=@totsize+ (p.equipment.width*p.equipment.depth)
+        @totsize=@totsize+ (p.equipment.width*p.equipment.depth*p.quantity)
       end
     end
     @totprice=@totprice.round(2)
