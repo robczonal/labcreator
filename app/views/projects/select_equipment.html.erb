@@ -7,14 +7,16 @@
       <% y=0 %>
       
         <%= f.fields_for :baskets, @rightbaskets do |b| %>
+        
           <% n=@ingreds[y] %>
           <% y=y+1 %>
           <hr class="divideline" />
     
-          <h4><%=n.equipcat.name+" x"+n.quantity.to_s %><%=n.unit%></h4>
-          
+          <h4 onclick= "<%="toggler("+"#"+y.to_s+")" %>" ><%=n.equipcat.name+" x"+n.quantity.to_s %><%=n.unit%></h4>
+          <div id= "<%=y.to_s %>" >
             <%= b.check_box :_destroy %>
             <%= b.label :_destroy, "Remove from basket" %><br />
+          </div>
             
           <p><em><%=n.notes %></em></p>
 
@@ -51,8 +53,9 @@
               </tr>             
             <% end %>
           </table>
-
+        
         <% end %>
+        
         <br />
     <%=f.submit "Update Equipment" %>
   <% end %>
