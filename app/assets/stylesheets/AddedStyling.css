@@ -17,6 +17,11 @@ table, tr, td {
     border-radius: 0px;
 }
 
+a:hover {
+    color: black;
+    background-color: rgb(190,240,120);
+}
+
 .header {
     float: none;
 }
@@ -30,6 +35,43 @@ table, tr, td {
 .header img {
     float: none;
 }
+
+#tabs ul {
+	list-style: none;
+	padding:0;
+	margin:0;
+        border:solid;
+        border-width: 0px 0px 1px 0px;
+        border-color: gray;
+        border-radius: 0px;
+}
+
+#tabs li {
+	display: inline;
+	border: solid;
+	border-width: 1px;
+        border-color: gray;
+	margin: 0;
+        border-bottom-left-radius: 0px;
+        border-bottom-right-radius: 0px;
+        border-bottom-width: 1px;
+        border-bottom-color: #fefefe;
+        
+}
+
+#tabs li a {
+	padding: 0 1em;
+        border-bottom-left-radius: 0px;
+        border-bottom-right-radius: 0px;
+        text-decoration: none;
+}
+
+#tabs #selected {
+	background: white;
+        border-bottom-width: 3px;
+        border-bottom-color: #fefefe;
+}
+
 
 .outercont {
     width:940px;
