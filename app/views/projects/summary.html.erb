@@ -9,12 +9,17 @@
     <th>Status</th>
   </tr>
   <% if @project.analyses.count>0 %>
-    <% y=0 %>
     <% @project.analyses.each do |an|%>
-    <%y=y+1%>
       <tr>
         <td><%= an.name%></td>
-        <td><%=an.testxes.count%></td>
+        <td>
+          <% x=0 %>
+          <% @project.testxes.each do |te| %>
+            <% if an.id==te.analysis_id %>
+              <% x=x+1 %>
+            <% end %>
+          <% end %>
+          <%=x.to_s %></td>
         <td>Not available</td>
       </tr>
     <% end %>

@@ -1,35 +1,129 @@
+* {
+    border-radius: 5px;
+    font-family: Arial;
+}
+
+body {
+    height: 100%;
+    background-color: rgb(190,240,120);
+    background-image: url(testtubes.png);
+    background-repeat: repeat-x;
+    background-position: bottom;
+    background-attachment: fixed;
+
+}
+
+table, tr, td {
+    border-radius: 0px;
+}
+
+a:hover {
+    color: black;
+    background-color: rgb(190,240,120);
+}
+
+.header {
+    float: none;
+}
+
+.header p {
+    color: rgb(190,240,120);
+    font-size: 24px;
+    float: right;
+}
+
+.header img {
+    float: none;
+}
+
+#tabs ul {
+	list-style: none;
+	padding:0;
+	margin:0;
+        border:solid;
+        border-width: 0px 0px 1px 0px;
+        border-color: gray;
+        border-radius: 0px;
+}
+
+#tabs li {
+	display: inline;
+	border: solid;
+	border-width: 1px;
+        border-color: gray;
+	margin: 0;
+        border-bottom-left-radius: 0px;
+        border-bottom-right-radius: 0px;
+        border-bottom-width: 1px;
+        border-bottom-color: #fefefe;
+        
+}
+
+#tabs li a {
+	padding: 0 1em;
+        border-bottom-left-radius: 0px;
+        border-bottom-right-radius: 0px;
+        text-decoration: none;
+}
+
+#tabs #selected {
+	background: white;
+        border-bottom-width: 3px;
+        border-bottom-color: #fefefe;
+}
+
+
 .outercont {
     width:940px;
     margin:0 auto;
+    min-height:100%;
 
 }
 
 .container {
     background-color: #fefefe;
-    border-width: 1px;
+    border-width: 2px;
     border-style: solid;
     border-color: gray;
-    padding: 5px;
+    padding: 10px;
+
+}
+
+.content {
+    min-height: 300px;
+    max-height: 1000px;
+    overflow: auto;
+}
+
+.footer p {
+    margin: auto;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .background {
-    background-color: rgb(190,240,120);
+
+    padding: 10px;
+    min-height: 100%;
 }
 
 .header {
     min-height: 60px;
 }
 
-
 .equiptab {
 
 }
+
 .equipcheckcall {
     width:15px;
 }
+
 .equiplicell {
     width:400px;
 }
+
 .equipimcell {
     width:200px;
 }

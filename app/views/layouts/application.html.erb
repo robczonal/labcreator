@@ -5,65 +5,72 @@
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= stylesheet_link_tag    "AddedStyling"%>  
   <%= javascript_include_tag "application" %>
+  <%= javascript_include_tag "jquery" %>
   <%= csrf_meta_tags %>
 </head>
 <body>
   <div class="background">
-  <div class="outercont">
-    <div class="container">
-      <div class="header">
-        <%=image_tag("image003.jpg")%> 
-      </div>
+    <div class="outercont">
+      <div class="container">
       
-
-      <hr class="divideline" />
+        <div class="header">
+          <%=image_tag("image001.jpg", :alt=>"NuLab Laboratory Solutions", :height=>"100px")%>
+          <p>Lab Creator</p>
+        </div>
+        
+        <hr class="divideline" />
       
-
-                  <div id="user_nav">  
-      <% if admin_signed_in? %>  
-        Signed in as <%= current_admin.email %>  
-        <%= link_to "Sign out", destroy_admin_session_path, :method => :delete %> 
-      <% elsif user_signed_in? %>  
-        Signed in as <%= current_user.email %>. Not you?  
-        <%= link_to "Sign out", destroy_user_session_path, :method => :delete %>  
-      <% else %>  
-                <%= link_to "Sign in", new_user_session_path %> </br>
-		or <%= link_to "Sign in as administrator", new_admin_session_path %>
-      <% end %>  
-    </div>  
+        <div id="user_nav">  
+          <% if admin_signed_in? %>  
+            <p>Signed in as <%= current_admin.email %> 
+            <%= link_to "Sign out", destroy_admin_session_path, :method => :delete %> </p> 
+          <% elsif user_signed_in? %>  
+            <p>Signed in as <%= current_user.email %>. Not you?  
+            <%= link_to "Sign out", destroy_user_session_path, :method => :delete %></p>  
+          <% else %>  
+            <p><%= link_to "Sign in", new_user_session_path %>
+            or <%= link_to "Sign in as administrator", new_admin_session_path %></p>
+          <% end %>  
+        </div>
+      
 	<p class="notice"><%= notice %></p>
-       <p class="alert"><%= alert %></p>
+        <p class="alert"><%= alert %></p>
 
-<hr class="divideline" />
+        
 
-      <div class="breadbar">
-      <% if admin_signed_in? %>
-        <%=link_to "Projects", projects_path %>
-        <%= link_to "Administration", "/nulab_admin" %>
-      <% else %>
-      <%=link_to "Projects", projects_path %>
-	<% end %>  
-
-      </div>
+        <div class="breadbar">
+          <% if admin_signed_in? %>
+            <hr class="divideline" />
+            <%=link_to "Projects", projects_path %>
+            <%= link_to "Administration", "/nulab_admin" %>
+          <% elsif user_signed_in? %>
+            <hr class="divideline" />
+            <%=link_to "Projects", projects_path %>
+          <% end %>
+        </div>
       
-      <hr class="divideline" />
+        <hr class="divideline" />
       
-      <div class="content">
-        <%= yield %>
-      </div>
+        <div class="content">
+          <%= yield %>
+          <%= yield :scripts %>
+        </div>
       
-      <hr class="divideline" />
+        <hr class="divideline" />
       
-      <div class="footer">
-        <p>Footer</p>
-      </div>
+        <div class="footer">
+          <p><%=link_to "Download User Manual", :action=>:download, :controller=>:application, :class=>"righttext" %></p>
+          <p>Created for NuLab Laboratory Solutions &copy; 2012</p>
+        </div>
+      </div> 
     </div>
-    
-    
   </div>
-</div>
 
+  <script type="text/javascript" >
+    function toggler(x) {
+      $(x).slideToggle();
+  }
+  </script>
 
-
-</body>
+  </body>
 </html>
