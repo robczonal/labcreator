@@ -4,4 +4,4 @@ Feature: user creates an analysis
             And I filly in "name" with "oil analysis"
             When I press analysis "Create Analysis"
             Then I should be on the analysis show page
-            And I should see "oil analysis"
+            And I shouldna see "oil analysis"

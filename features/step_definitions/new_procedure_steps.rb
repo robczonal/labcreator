@@ -13,6 +13,6 @@ When /^I press proc "(.*?)"$/ do |create|
 end
 
 Then /^I should be on the procedure show page$/ do
-  visit('/procedurexes/1')
+  visit('/nulab_admin/procedurex')
   page.should have_content("bs&w by centrifuge")
 end

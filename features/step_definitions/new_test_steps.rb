@@ -26,11 +26,11 @@ And /^I go to the new test page$/ do
     #click_button "Sign in"  
 end
 
-And /^I log in as "([^\"]*)" with password "([^\"]*)"$/ do |email, password|  
-      fill_in "Email", :with => email
-      fill_in "Password", :with => password
-      click_button "Sign in"  
-    end  
+#And /^I log in as "([^\"]*)" with password "([^\"]*)"$/ do |email, password|  
+#      fill_in "Email", :with => email
+#      fill_in "Password", :with => password
+#      click_button "Sign in"  
+#   end  
 
 
 Then /^I shouldx see "(.*?)"$/ do |text|

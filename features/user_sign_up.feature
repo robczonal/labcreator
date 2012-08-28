@@ -3,8 +3,7 @@ Feature: user sign in
             Given I go to the home page
             When I pressx "Sign in"
             Then I should be on the users sign_in page
-            And I should see "Sign in"
 	    Given I writeu in "Email" with "test@test.com"
 	    And I writeur in "Password" with "password"
 	    When I clickx "Sign in"
-            Then I should see "Projects"
+            Then I shouldusu see "Projects"

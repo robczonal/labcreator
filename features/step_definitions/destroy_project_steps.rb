@@ -1,21 +1,21 @@
-Given /^I go to the project page$/ do
+Given /^I dp go to the projects page$/ do
   visit('/projects') 
    page.should have_content("Projects")
 end
 
-And /^I press "(.*?)"$/ do |create|
-  click_link('Destroy')
+And /^I pressdp "(.*?)"$/ do |destroy|
+  click_button('Destroy')
 end 
 
-When /^I confirm popup$/ do
+When /^I confirmdp popup$/ do
   page.driver.browser.switch_to.alert.accept    
 end
 
-Then /^I should be on the project page$/ do
+Then /^I shoulddp be on the projects page$/ do
   visit('/projects')
   page.should have_content("project 1")
 end
 
-Then /^I should see "(.*?)"$/ do |text|
+Then /^I shoulddp see "(.*?)"$/ do |text|
   page.should have_content(text)
 end

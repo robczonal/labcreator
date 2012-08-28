@@ -14,5 +14,8 @@ end
 
 Then /^I should be on the analysis show page$/ do
   visit('/analyses/1')
-  page.should have_content("oil analysis")
+end
+
+And /^I shouldna see "(.*?)"$/ do |text|
+  page.should have_content(text)
 end

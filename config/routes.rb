@@ -5,7 +5,10 @@ NuLab::Application.routes.draw do
 
 
   devise_for :admins 
-  devise_scope :admins do get '/admins/sign_out' => 'devise/sessions#destroy' end
+  devise_scope :admins do 
+	  get '/admins/sign_out' => 'devise/sessions#destroy' 
+	  post '/admins/sign_in' => 'devise/sessions#create'
+	  end
  
 
   devise_for :users

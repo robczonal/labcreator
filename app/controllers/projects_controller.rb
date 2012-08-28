@@ -1,6 +1,6 @@
 class ProjectsController < ApplicationController
   
-  before_filter :authenticate_user_or_admin! 
+  #before_filter :authenticate_user_or_admin! 
 
   def find_user_name
      if admin_signed_in? 
