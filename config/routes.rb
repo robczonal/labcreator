@@ -18,7 +18,7 @@ NuLab::Application.routes.draw do
 	match 'projects/:id/delete_ana', :controller => 'projects', :action => 'delete_ana'
 	match 'projects/:id/delete_basket', :controller => 'projects', :action => 'delete_basket'	
 	match 'projects/:id/create_baskets', :controller => 'projects', :action => 'create_baskets', :via => :POST
-	
+
 	resources :projects do
           member do
             put "create_baskets"
@@ -45,6 +45,7 @@ NuLab::Application.routes.draw do
 	resources :analyses_projects
 	resources :projects_testxes
 	resources :equipcats
+	resources :baskets
 	
   # The priority is based upon order of creation:
   # first created -> highest priority.
