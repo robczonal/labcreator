@@ -4,4 +4,4 @@ Feature: user creates a procedure
             And I fill "name" with "bs&w by centrifuge"
             When I press proc "Create Procedurex"
             Then I should be on the procedure show page
-            And I should see "bs&w by centrifuge"
+            And I should see proc "bs&w by centrifuge"

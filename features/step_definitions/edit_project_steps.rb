@@ -1,5 +1,5 @@
 Given /^I go to the edit project page$/ do
-  visit('/projects/edit') 
+  visit('/projects/1/edit') 
    page.should have_content("Editing project")
 end
 

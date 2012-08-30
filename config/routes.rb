@@ -6,10 +6,8 @@ NuLab::Application.routes.draw do
 
   devise_for :admins 
   devise_scope :admins do 
-	  get '/admins/sign_out' => 'devise/sessions#destroy' 
-	  post '/admins/sign_in' => 'devise/sessions#create'
-	  end
- 
+	get '/admins/sign_out' => 'devise/sessions#destroy' 
+	post '/admins/sign_in' => 'devise/sessions#create' end
 
   devise_for :users
 
@@ -22,6 +20,7 @@ NuLab::Application.routes.draw do
 	match 'projects/:id/delete_ana', :controller => 'projects', :action => 'delete_ana'
 	match 'projects/:id/delete_basket', :controller => 'projects', :action => 'delete_basket'	
 	match 'projects/:id/create_baskets', :controller => 'projects', :action => 'create_baskets', :via => :POST
+	match 'download', :controller => 'application', :action => 'download'
 	resources :projects do
           member do
             put "create_baskets"
@@ -31,7 +30,7 @@ NuLab::Application.routes.draw do
           resources :comments
           resources :baskets
           resources :procedurexes do
-            resources :ingredients
+            resources :ingredientsgit
           end
           resources :equipment
           resources :equipcats
