@@ -1,5 +1,6 @@
 class ProjectsController < ApplicationController
   
+  #Users have full authorization, unauthorised persons may not view
   before_filter :authenticate_user_or_admin! 
 
   def find_user_name

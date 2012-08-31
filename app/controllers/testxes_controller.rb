@@ -1,8 +1,14 @@
 class TestxesController < ApplicationController
+   #This controller can be used instead of the rails admin gem to allow the administrator to update the database
+   #It is used for when the administrator chooses to 'show in application' from the rails_admin gem.
 
-   before_filter :authenticate_admin!, :only => [:new, :edit, :destroy]
+   #Users can view but not change testxes
+  before_filter :authenticate_admin!, :only => [:new, :edit, :destroy]
+  #Only authorised persons may view
   before_filter :authenticate_user_or_admin! 
 
+
+   #Checks if user or admin is signed in; this should be placed in the application controller
   def find_user_name
      if admin_signed_in? 
         return admin.current_admin
@@ -13,8 +19,8 @@ class TestxesController < ApplicationController
      end
   end
 
-# GET /testxes
-  # GET /testxes.json
+
+   #Lists all testxes
   def index
     @testxes = Testx.all
 
@@ -24,8 +30,7 @@ class TestxesController < ApplicationController
     end
   end
 
-  # GET /testxes/1
-  # GET /testxes/1.json
+  #Shows 1 testx  
   def show
     @testx = Testx.find(params[:id])
 
@@ -35,8 +40,7 @@ class TestxesController < ApplicationController
     end
   end
 
-  # GET /testxes/new
-  # GET /testxes/new.json
+  # Instigates form for new testx
   def new
     @testx = Testx.new
 
@@ -46,13 +50,12 @@ class TestxesController < ApplicationController
     end
   end
 
-  # GET /testxes/1/edit
+  # Instigates form for extant testx
   def edit
     @testx = Testx.find(params[:id])
   end
 
-  # POST /testxes
-  # POST /testxes.json
+  # Saves new testx created by new
   def create
     @testx = Testx.new(params[:testx])
 
@@ -67,8 +70,7 @@ class TestxesController < ApplicationController
     end
   end
 
-  # PUT /testxes/1
-  # PUT /testxes/1.json
+  #Updates testx from edit
   def update
     @testx = Testx.find(params[:id])
 
@@ -83,8 +85,7 @@ class TestxesController < ApplicationController
     end
   end
 
-  # DELETE /testxes/1
-  # DELETE /testxes/1.json
+  #Deletes a testx from the database
   def destroy
     @testx = Testx.find(params[:id])
     @testx.destroy
