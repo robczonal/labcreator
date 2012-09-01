@@ -1,4 +1,7 @@
 <%= render 'tabs1' %>
+<%# This entire form is a mash of html form tags and old-style unclear rails attributes. The best solution would be to scrap it and start again.%>
+<%# The form updates via the update_attributes function of the projectsController 'update' method %>
+
 <h2>Analyses</h2>
 <table>
   <tr>
@@ -7,60 +10,70 @@
     <th>Status</th>
     <th>Remove</th>
   </tr>
-<%=form_for(@project) do |f| %>  
-  <% if @project.analyses.count>0 %>
-    <% @project.analyses.each do |an| %>
-      <tr>
-        <td><%=an.name %></td>
-        <td><%= check_box_tag "project[analysis_ids][]", an.id, @project.analyses.include?(an), :class=>"hideit" %></td>
-        <td>Not available</td>
-        <td><%=link_to "Delete", project_path(@project.id.to_s+'/delete_ana', :ana_id => an.id), :confirm=> "Are you sure? This will delete your associated tests." %><br /></td>
-      </tr>
+  <%=form_for(@project) do |f| %>  
+    <% if @project.analyses.count>0 %> <%# If the project has analyses, list them %>
+      <% @project.analyses.each do |an| %>
+      
+        <tr>
+          <td><%=an.name %></td>
         
-            <%@project.testxes.each do |t|%>
+          <%# The following checkbox is a bug - if it is not checked, the form deletes things on submission. Therefore, the css hides it, but this is only a temporary fix %>
+          <td><%= check_box_tag "project[analysis_ids][]", an.id, @project.analyses.include?(an), :class=>"hideit" %></td>
+        
+          <td>Not available</td>
+          <td><%=link_to "Delete", project_path(@project.id.to_s+'/delete_ana', :ana_id => an.id), :confirm=> "Are you sure? This will delete your associated tests." %><br /></td>
+        </tr>
+        
+        <%@project.testxes.each do |t|%> <%# for each of the project's tests %>
               
-              <% if t.analysis_id==an.id %>
-                <tr>
-                  <td></td>
-                  <td><%=link_to t.name, project_path(@project.id.to_s+'/select_procedure', :test_id => t.id)%></td>
-                  <td><%= check_box_tag "project[testx_ids][]", t.id, @project.testxes.include?(t), :class=>"hideit" %></td>
-                  <td><%=link_to "Delete", project_path(@project.id.to_s+'/delete_test', :test_id => t.id), :confirm=> "Are you sure?" %></td>
-                </tr>
-              <% end %>
-            <%end%>
+          <% if t.analysis_id==an.id %><%# if the current test belongs to the current analysis, show it %>
+            
             <tr>
               <td></td>
-              <td colspan="3">
-                <select name="project[testx_ids][]">
-                  <option value="">Add Test</option>
-                  <% if an.testxes.count>0 %>
-                    <% an.testxes.each do |t| %>
-                      <option value="<%=t.id%>"><%=t.name%></option>            
-                    <% end %>
-                  <% end %>
-                </select>
-              </td>
+              <td><%=link_to t.name, project_path(@project.id.to_s+'/select_procedure', :test_id => t.id)%></td>
+                  
+              <%# The following checkbox is a bug - if it is not checked, the form deletes things on submission. Therefore, the css hides it, but this is only a temporary fix %>
+              <td><%= check_box_tag "project[testx_ids][]", t.id, @project.testxes.include?(t), :class=>"hideit" %></td>
+                  
+              <td><%=link_to "Delete", project_path(@project.id.to_s+'/delete_test', :test_id => t.id), :confirm=> "Are you sure?" %></td>
             </tr>
-
-      
+            
+          <% end %><%# if %>
+        <%end%><%# project test loop %>
         
-    <% end %>
-  <%else%>
-    <tr><td><em>Empty</em></td></tr>
-  <%end%>
-</table>
+        <tr>
+          <td></td>
+          <td colspan="3">
+            <select name="project[testx_ids][]"> <%#Drop-down menu to select a test belonging to the current analysis %>  
+              <option value="">Add Test</option>
+              <% if an.testxes.count>0 %>
+                <% an.testxes.each do |t| %>
+                  <option value="<%=t.id%>"><%=t.name%></option>          
+                <% end %>
+              <% end %>
+            </select>
+          </td>
+        </tr>
+        
+      <% end %><%# analysis loop %>
+      
+    <%else%><%# if there are no analyses for this procedure %>
+      <tr><td><em>Empty</em></td></tr>
+    <%end%>
+  </table>
 
 
-  <select name="project[analysis_ids][]">
+  <select name="project[analysis_ids][]"><%#Drop-down menu to select an analysis %>  
     <option value="">Add Analysis</option>
     <% @analyses.each do |a| %>
       <option value="<%=a.id%>"><%=a.name%></option>
     <%end%>
   </select>
 
+  <%# This is required, I'm not sure why. %>
   <%= hidden_field_tag "project[analysis_ids][]", '' %>
 
   <div class="actions">
     <%=f.submit %>
   </div>
-<% end %>
+<% end %> <%# form %>

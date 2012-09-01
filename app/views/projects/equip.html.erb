@@ -8,7 +8,7 @@
     <th>Equipment</th>
     <th>Type</th>
     <th>Quantity</th>
-    <th>Size</th>
+    <th>Size HxWxD</th>
     <th>Price</th>
     <th></th>
     <th>Remove</th>
@@ -23,8 +23,8 @@
         <td><%= an.equipment.equipcat.name%></td>
 	<td><%= an.equipment.name%></td>
         <td><%= an.quantity %></td>
-        <td><%= an.equipment.height.round(0)%>x<%= an.equipment.width.round(0)%>x<%= an.equipment.depth.round(0)%>mm</td>
-        <td>&pound;<%=if an.equipment.price.nil? or an.equipment.price==0 then "Not available" else sprintf "%.02f", (an.quantity*an.equipment.price).round(2) end%></td>
+        <td><%= an.equipment.height.round(0)%>x<%= an.equipment.width.round(0)%>x<%= an.equipment.depth.round(0)%>mm</td> <%# rounds to 0dp %>
+        <td>&pound;<%=if an.equipment.price.nil? or an.equipment.price==0 then "Not available" else sprintf "%.02f", (an.quantity*an.equipment.price).round(2) end%></td> <%# only displays if the equipment price exists %>
         <td></td>
 	<td><%= link_to 'Remove', project_path(@project.id.to_s+'/delete_basket', :bask_id => an.id), :confirm=> "Are you sure?" %> </td>
   </tr>    
