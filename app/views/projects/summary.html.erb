@@ -8,15 +8,15 @@
     <th>No. Tests</th>
     <th>Status</th>
   </tr>
-  <% if @project.analyses.count>0 %>
+  <% if @project.analyses.count>0 %><%# if there are analyses for this project%>
     <% @project.analyses.each do |an|%>
       <tr>
         <td><%= an.name%></td>
         <td>
           <% x=0 %>
           <% @project.testxes.each do |te| %>
-            <% if an.id==te.analysis_id %>
-              <% x=x+1 %>
+            <% if an.id==te.analysis_id %><%#if a project's test belongs to the analysis %>
+              <% x=x+1 %><%#Count the number of tests for the analysis for this project %>
             <% end %>
           <% end %>
           <%=x.to_s %></td>
@@ -24,7 +24,11 @@
       </tr>
     <% end %>
   <% else %>
-    <tr><td><em>Empty</em></td><td></td><td></td></tr>
+    <tr>
+      <td><em>Empty</em></td>
+      <td></td>
+      <td></td>
+    </tr>
   <% end %>
 </table>
 
