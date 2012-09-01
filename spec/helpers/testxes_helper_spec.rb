@@ -1,4 +1,5 @@
 require 'spec_helper'
+require File.dirname(__FILE__) + "/factories"
 
 # Specs in this file have access to a helper object that includes
 # the TestxesHelper. For example:

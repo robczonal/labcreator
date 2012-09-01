@@ -3,5 +3,5 @@ class Equipment < ActiveRecord::Base
   belongs_to :equipcat
   has_many :baskets
   validates :name, :presence => true
-  validates :equipcat_id, :presence => true
+#  validates :equipcat_id, :presence => true
 end

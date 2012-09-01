@@ -12,7 +12,6 @@ When /^I press analysis "(.*?)"$/ do |create|
   click_button('Create Analysis')
 end 
 
-Then /^I should be on the analysis show page$/ do
-  visit('/analyses/1')
-  page.should have_content("oil analysis")
+Then /^I shouldna see "(.*?)"$/ do |text|
+  page.should have_content(text)
 end

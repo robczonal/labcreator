@@ -1,8 +1,8 @@
 class EquipmentController < ApplicationController
 
 
-   before_filter :authenticate_admin!, :only => [:new, :edit, :destroy]
-  before_filter :authenticate_user_or_admin! 
+   #before_filter :authenticate_admin!, :only => [:new, :edit, :destroy]
+  #before_filter :authenticate_user_or_admin! 
 
   def find_user_name
      if admin_signed_in? 

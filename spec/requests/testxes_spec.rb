@@ -9,3 +9,13 @@ describe "Testxes" do
     end
   end
 end
+
+describe"new_test" do
+	it "adds a new test"
+    user = Factory(:user)
+    visit "admins/sign_in"
+    fill_in "Password", :with => "meston209"
+    fill_in "Email", :with => "aberdeenlab@gmail.com"
+    click_button "Sign in"
+    end
+end
