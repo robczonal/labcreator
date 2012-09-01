@@ -1,5 +1,6 @@
 Feature: remove equipment
 	Scenario: User removes equipment from basket
+		Given I have created a re project
 		Given I havere 2 x items in my basket
 		And I go to the project re equipment page
 		When I pressre "Remove"

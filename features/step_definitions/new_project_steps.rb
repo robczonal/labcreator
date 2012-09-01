@@ -30,9 +30,9 @@ When /^I pressnp "(.*?)"$/ do |create|
   click_button('Create Project')
 end 
 
-Then /^I shouldnp be on the project show page$/ do
-  visit('/projects/1')
-end
+#Then /^I shouldnp be on the project show page$/ do
+  #visit('/projects/1')
+#end
 
 Then /^I shouldnp see "(.*?)"$/ do |text|
   page.should have_content(text)

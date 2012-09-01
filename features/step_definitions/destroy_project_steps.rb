@@ -4,7 +4,8 @@ Given /^I dp go to the projects page$/ do
 end
 
 And /^I pressdp "(.*?)"$/ do |destroy|
-  click_button('Destroy')
+  page.should have_link(Destroy)
+  click_link(destroy)
 end 
 
 When /^I confirmdp popup$/ do
@@ -13,7 +14,6 @@ end
 
 Then /^I shoulddp be on the projects page$/ do
   visit('/projects')
-  page.should have_content("project 1")
 end
 
 Then /^I shoulddp see "(.*?)"$/ do |text|

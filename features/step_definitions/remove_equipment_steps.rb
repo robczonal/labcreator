@@ -1,6 +1,11 @@
+Given /^I have created a re project$/ do
+  @p = Project.new(:name =>"Project 1", :id=>1)
+  @p.save
+end
+
 Given /^I havere (\d+) x items in my basket$/ do |qty|
-  @basket ||= [ ]
-  @basket << (qty.to_i)
+  @p.baskets ||= [ ]
+  @p.baskets << (qty.to_i)
 end
 
 And /^I go to the project re equipment page$/ do
@@ -20,6 +25,6 @@ Then /^I shouldre be on the project equipment page$/ do
 end
 
 And /^I shouldre have (\d+) x items in my basket$/ do |qty|
-  @basket ||= [ ]
-  @basket << (qty.to_i)
+  @p.basket ||= [ ]
+  @p.basket << (qty.to_i)
 end

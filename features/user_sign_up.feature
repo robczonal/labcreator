@@ -6,4 +6,4 @@ Feature: user sign in
 	    Given I writeu in "Email" with "test@test.com"
 	    And I writeur in "Password" with "password"
 	    When I clickx "Sign in"
-            Then I shouldusu see "Projects"
+            

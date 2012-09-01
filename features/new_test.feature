@@ -1,9 +1,10 @@
 Feature: user creates a test
     Scenario: User adds a test
          Given I am logged in as "aberdeenlab@gmail.com" with password "meston209"
+	    Given I havent analysis "Crude Oil Analysis"
 	    And I go to the new test page
 	    Then I shouldx see "New testx"
-            When I write in "name" with "water content"
+            When I write in "Name" with "water content"
+	    And I selectnt "Crude Oil Analysis" from "Analysis"
             And I press test "Create Testx"
-            Then I should be on the test show page
-            And I should see "water content"
+            And I should nt see "water content"

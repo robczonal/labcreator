@@ -18,6 +18,10 @@ Given /^I am logged in as "([^\"]*)" with password "([^\"]*)"$/ do |email, passw
       click_button "Sign in"  
     end  
 
+Given /^I havent analysis "(.*?)"$/ do |name|
+  @analysis = Analysis.new(:name =>name)
+  @analysis.save
+end
 
 And /^I go to the new test page$/ do
    visit('/testxes/new') 
@@ -38,15 +42,19 @@ Then /^I shouldx see "(.*?)"$/ do |text|
 end
 
 When /^I write in "(.*?)" with "(.*?)"$/ do |value, text|
-  value = 'name'
+  value = 'Name'
   fill_in(value,:with=>text)
+end
+
+And /^I selectnt "(.*?)" from "(.*?)"$/ do |analysis, menu|
+	analysis = 'Crude Oil Analysis'
+	menu = 'Analysis'
 end
 
 And /^I press test "(.*?)"$/ do |create|
   click_button('Create Testx')
 end
 
-Then /^I should be on the test show page$/ do
-    visit('/testxes/1')
-  page.should have_content("water content")
+Then /^I should nt see "(.*?)"$/ do |text|
+  page.should have_content(text)
 end

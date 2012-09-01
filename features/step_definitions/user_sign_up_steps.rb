@@ -24,8 +24,10 @@ When /^I clickx "(.*?)"$/ do |arg1|
   click_button('Sign in')
 end
 
-Then /^I shouldusu see "(.*?)"$/ do |text|
-  page.should have_content(text)
+Then /^I should be on the home su page$/ do
+   visit('/')
 end
 
-
+And /^I should see su "(.*?)"$/ do |text|
+  page.should have_content(text)
+end
