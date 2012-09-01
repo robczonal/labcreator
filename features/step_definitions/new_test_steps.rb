@@ -11,12 +11,12 @@
   #end
 #end
 
-Given /^I am logged in as "([^\"]*)" with password "([^\"]*)"$/ do |email, password|  
-       visit ('/admins/sign_in')  
-      fill_in "Email", :with => email
-      fill_in "Password", :with => password
-      click_button "Sign in"  
-    end  
+#Given /^I am logged in as "([^\"]*)" with password "([^\"]*)"$/ do |email, password|  
+ #      visit ('/admins/sign_in')  
+ #     fill_in "Email", :with => email
+  #    fill_in "Password", :with => password
+ #     click_button "Sign in"  
+ #   end  
 
 Given /^I havent analysis "(.*?)"$/ do |name|
   @analysis = Analysis.new(:name =>name)

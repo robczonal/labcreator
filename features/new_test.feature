@@ -1,6 +1,5 @@
 Feature: user creates a test
     Scenario: User adds a test
-         Given I am logged in as "aberdeenlab@gmail.com" with password "meston209"
 	    Given I havent analysis "Crude Oil Analysis"
 	    And I go to the new test page
 	    Then I shouldx see "New testx"
