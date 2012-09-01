@@ -8,18 +8,6 @@ class TestxesController < ApplicationController
   before_filter :authenticate_user_or_admin! 
 
 
-   #Checks if user or admin is signed in; this should be placed in the application controller
-  def find_user_name
-     if admin_signed_in? 
-        return admin.current_admin
-	admin_session
-     elsif user_signed_in?
-        return user.current_user
-	user_session
-     end
-  end
-
-
    #Lists all testxes
   def index
     @testxes = Testx.all
