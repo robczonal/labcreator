@@ -14,14 +14,18 @@
       <div class="container">
       
         <div class="header">
+          <%# Comment: This does not display in ie 8, probably due to size constraints. A solution may be to use CSS for sizing. %>
+          
           <%=image_tag("image001.jpg", :alt=>"NuLab Laboratory Solutions", :height=>"100px")%>
           <p>Lab Creator</p>
         </div>
         
         <hr class="divideline" />
       
-        <div id="user_nav">  
-          <% if admin_signed_in? %>  
+        <div id="user_nav">
+          <%# Comment: Display different links depending if user is signed in %>
+          
+          <% if admin_signed_in? %>
             <p>Signed in as <%= current_admin.email %> 
             <%= link_to "Sign out", destroy_admin_session_path, :method => :delete %> </p> 
           <% elsif user_signed_in? %>  
@@ -36,9 +40,9 @@
 	<p class="notice"><%= notice %></p>
         <p class="alert"><%= alert %></p>
 
-        
-
         <div class="breadbar">
+          <%# Comment: display different links depending on user or admin %>
+          
           <% if admin_signed_in? %>
             <hr class="divideline" />
             <%=link_to "Projects", projects_path %>
@@ -52,6 +56,8 @@
         <hr class="divideline" />
       
         <div class="content">
+          <%# Comment: Content Goes here %>
+          
           <%= yield %>
           <%= yield :scripts %>
         </div>
@@ -59,13 +65,14 @@
         <hr class="divideline" />
       
         <div class="footer">
-          <p><%=link_to "Download User Manual", :action=>:download, :controller=>:application, :class=>"righttext" %></p>
+          <p><%=link_to "Download User Manual", "/userManual.pdf", :target=>"_blank" %></p>
           <p>Created for NuLab Laboratory Solutions &copy; 2012</p>
         </div>
       </div> 
     </div>
   </div>
-
+  
+  <%# Comment: This script will be used to show/hide equipment on the select_equipment page %>
   <script type="text/javascript" >
     function toggler(x) {
       $(x).slideToggle();

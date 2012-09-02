@@ -1,17 +1,11 @@
 class AnalysesController < ApplicationController
+   #This controller can be used instead of the rails admin gem to allow the administrator to update the database
+   #It is used for when the administrator chooses to 'show in application' from the rails_admin gem.
 
    #before_filter :authenticate_admin!, :only => [:new, :edit, :destroy]
   #before_filter :authenticate_user_or_admin! 
 
-  def find_user_name
-     if admin_signed_in? 
-        return admin.current_admin
-	admin_session
-     elsif user_signed_in?
-        return user.current_user
-	user_session
-     end
-  end
+
   
 # GET /analyses
   # GET /analyses.json

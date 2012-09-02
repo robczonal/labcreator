@@ -1,4 +1,5 @@
 class CommentsController < ApplicationController
+  #Creates and destroys comments from the projects 'Project Description' page
   
   def create
     @project = Project.find(params[:project_id])

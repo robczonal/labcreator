@@ -1,40 +1,49 @@
 <%= render 'tabs1' %>
 
-<h2><%=@procedure.name %></h2><%=link_to "Back to "+@procedure.testx.name, project_path(@project.id.to_s+'/select_procedure', :test_id => @procedure.testx_id) %>
+<h2><%=@procedure.name %></h2>
+<%=link_to "Back to "+@procedure.testx.name, project_path(@project.id.to_s+'/select_procedure', :test_id => @procedure.testx_id) %>
 
-<% if @procedure.ingredientss[0].equipcat then %>
-  <%= form_for @project, :url => {:action => 'create_baskets'} do |f| %>
-      <% y=0 %>
-      
-        <%= f.fields_for :baskets, @rightbaskets do |b| %>
-        
-          <% n=@ingreds[y] %>
-          <% y=y+1 %>
-          <hr class="divideline" />
+<% if @procedure.ingredientss[0] then %> <%#if a procdure has ingredients%>
+  <% if @procedure.ingredientss[0].equipcat then %> <%#if a procedure's ingredients has equipment categories%>
     
-          <h4 onclick= "<%="toggler("+"#"+y.to_s+")" %>" ><%=n.equipcat.name+" x"+n.quantity.to_s %><%=n.unit%></h4>
-          <div id= "<%=y.to_s %>" >
-            <%= b.check_box :_destroy %>
-            <%= b.label :_destroy, "Remove from basket" %><br />
-          </div>
-            
+    <%= form_for @project, :url => {:action => 'create_baskets'} do |f| %> <%# Creates a form for the project %>
+      <% y=0 %>
+        
+      <%= f.fields_for :baskets, @rightbaskets do |b| %> <%# Creates a form for baskets for the number of ingredients for this project %>
+          
+        <% n=@ingreds[y] %><%# Use a local variable for the current ingredient %>
+        <% y=y+1 %>
+          
+        <hr class="divideline" />
+          
+        <h4 style='display:inline' ><%=n.equipcat.name+" x"+n.quantity.to_s %><%=n.unit%></h4>
+        <%# Link to script on application controller to show/hide the ingredient div with id y %>
+        <a style="display:inline; text-decoration: underline; cursor: pointer;" onclick= "<%="toggler("+"\"#"+y.to_s+"\")" %>" > show/hide </a>
+        
+        <div id= "<%=y.to_s %>" > <%# This div is used by jquery to show/hide the equipment for an ingredient %>
+          
+          <%= b.check_box :_destroy %>
+          <%= b.label :_destroy, "Remove from basket" %><br />
+        
           <p><em><%=n.notes %></em></p>
 
           <%= b.label :quantity %><br />
           <%= b.text_field :quantity, :default =>n.quantity %>
-          
+            
           <%=b.hidden_field 'procedurex_id', :value=>@procedure.id %>
           <%=b.hidden_field 'project_id', :value=>@project.id %>
-      
+        
           <p>Please select one from the following:</p>
-          
+            
           <table class="equiptab" border="1" cellpadding="3" cellspacing="0">
-            <% n.equipcat.equipment.each do |e| %>
+            <% n.equipcat.equipment.each do |e| %><%# This will loop through all the instances of the specific pieces of equipment and display them %>
+                
               <tr>
                 <td rowspan="3" class="equipcheckcell">[]</td>
                 <td colspan="2"><h4><%=e.name %></h4></td>
                 <td rowspan="3" class="equipcheckcell"><%=b.radio_button :equipment_id, e.id %></td>  
               </tr>
+            
               <tr>
                 <td class="equipimcell" ><img src="<%=e.picture%>" width="200" alt="<%=e.name %>" /></td>
                 <td class="equiplicell">
@@ -48,19 +57,27 @@
                   <p><a href="<%=e.externallink%>"><%=e.externallink%></a></p>
                 </td>
               </tr>
+                
               <tr>
                 <td colspan="2"><p><%=e.description%></p></td>
-              </tr>             
-            <% end %>
+              </tr>
+                
+            <% end %><%# the loop for each piece of equipment %>
           </table>
         
-        <% end %>
-        
-        <br />
-    <%=f.submit "Update Equipment" %>
-  <% end %>
+        </div><%# div for current ingredient %>
+    
+      <% end %><%# fields_for n.b. some text editors fo not recognise the need for an end and identify an error here %>
+          
+      <br />
+      
+      <%=f.submit "Update Equipment" %>
+      
+    <% end %><%# form_for  n.b. some text editors fo not recognise the need for an end and identify an error here %>
   
+  <% else %>
+    <%="Sorry, no equipment is associated with this procedure" %>
+  <% end %>
 <% else %>
-  <%="Sorry, no equipment is associated with this procedure" %>
+  <%="Sorry, no ingredients are associated with this procedure" %>
 <% end %>
-
