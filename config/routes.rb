@@ -21,9 +21,6 @@ NuLab::Application.routes.draw do
 	match 'projects/:id/delete_basket', :controller => 'projects', :action => 'delete_basket'	
 	match 'projects/:id/create_baskets', :controller => 'projects', :action => 'create_baskets', :via => :POST
 
-	match 'download', :controller => 'devise/application', :action => 'download'
-	match 'download', :controller => 'application', :action => 'download'
-
 	resources :projects do
           member do
             put "create_baskets"

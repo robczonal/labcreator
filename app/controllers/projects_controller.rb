@@ -1,7 +1,8 @@
 class ProjectsController < ApplicationController
   
 
-  #before_filter :authenticate_user_or_admin! 
+  #Users have full authorization, unauthorised persons may not view
+  before_filter :authenticate_user_or_admin! 
 
 
   
