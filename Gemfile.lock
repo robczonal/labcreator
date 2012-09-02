@@ -206,5 +206,6 @@ DEPENDENCIES
   rails_admin
   rspec-rails (= 2.10.1)
   sass-rails (~> 3.2.3)
+  selenium-webdriver (~> 2.24.0)
   sqlite3
   uglifier (>= 1.0.3)

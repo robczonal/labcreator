@@ -6,6 +6,19 @@
 
 require 'cucumber/rails'
 
+#require 'capybara'
+#require 'capybara/cucumber'
+#require 'rspec'
+#require 'selenium/webdriver'
+ 
+#Capybara.default_driver = :selenium
+#Capybara.app_host = "http://localhost:3000/"
+#Capybara.register_driver :selenium do |app|
+#  Capybara::Selenium::Driver.new(app, :browser => :chrome)
+#end
+
+#World(Capybara)
+
 #require "#{Rails.root}/test/factories"
 #require "#{Rails.root}/spec/factories"
 
@@ -14,7 +27,7 @@ require 'cucumber/rails'
 
 # Capybara defaults to XPath selectors rather than Webrat's default of CSS3. In
 # order to ease the transition to Capybara we set the default here. If you'd
-# prefer to use XPath just remove this line and adjust any selectors in your
+# prefer to use XPath just rem ove this line and adjust any selectors in your
 # steps to use the XPath syntax.
 Capybara.default_selector = :css
 
