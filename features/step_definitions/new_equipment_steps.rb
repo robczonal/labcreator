@@ -9,11 +9,11 @@ And /^I fillx in "(.*?)" with "(.*?)"$/ do |value, text|
 end
 
 When /^I press equip "(.*?)"$/ do |create|
-  click_button('Create Equipment')
+  click_button(create)
 end 
 
 Then /^I should be on the equipment show page$/ do
-  visit('/equipment/1')
+ #visit('/equipment/1')
   page.should have_content("toaster")
 end
 

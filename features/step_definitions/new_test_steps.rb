@@ -52,7 +52,7 @@ And /^I selectnt "(.*?)" from "(.*?)"$/ do |analysis, menu|
 end
 
 And /^I press test "(.*?)"$/ do |create|
-  click_button('Create Testx')
+  click_button(create)
 end
 
 Then /^I should nt see "(.*?)"$/ do |text|

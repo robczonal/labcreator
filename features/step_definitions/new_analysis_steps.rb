@@ -9,7 +9,7 @@ And /^I filly in "(.*?)" with "(.*?)"$/ do |value, text|
 end
 
 When /^I press analysis "(.*?)"$/ do |create|
-  click_button('Create Analysis')
+  click_button(create)
 end 
 
 Then /^I shouldna see "(.*?)"$/ do |text|

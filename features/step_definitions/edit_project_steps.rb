@@ -9,7 +9,7 @@ And /^I fill in "(.*?)" with "(.*?)"$/ do |value, text|
 end
 
 When /^I press "(.*?)"$/ do |create|
-  click_button('Update Project')
+  click_button(create)
 end 
 
 Then /^I should be on the project show page$/ do

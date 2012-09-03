@@ -3,17 +3,29 @@ Given /^I have created a re project$/ do
   @p.save
 end
 
-Given /^I havere (\d+) x items in my basket$/ do |qty|
-  @p.baskets ||= [ ]
-  @p.baskets << (qty.to_i)
+Given /^I have created two re equipments$/ do
+  @eq = Equipment.new(:id=>2)
+  @eq.save
+  @equ = Equipment.new(:id=>3)
+  @equ.save
 end
+
+Given /^I havere two items in my basket$/ do 
+  @p.baskets ||= [ ]
+  @p.baskets << ( )
+end
+
+#Given /^I havere (\d+) x items in my basket$/ do |qty|
+ # @p.baskets ||= [ ]
+ # @p.baskets << (qty.to_i)
+#end
 
 And /^I go to the project re equipment page$/ do
   visit('/projects/1/equip') 
 end
 
-When /^I pressre "(.*?)"$/ do |arg1|
-  click_link('Remove')
+When /^I pressre "(.*?)"$/ do |text|
+  click_link(text)
 end
 
 And /^I confirmre popup$/ do
