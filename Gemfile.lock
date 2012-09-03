@@ -69,8 +69,11 @@ GEM
     erubis (2.7.0)
     execjs (1.4.0)
       multi_json (~> 1.0)
-    factory_girl (3.4.0)
+    factory_girl (4.0.0)
       activesupport (>= 3.0.0)
+    factory_girl_rails (4.0.0)
+      factory_girl (~> 4.0.0)
+      railties (>= 3.0.0)
     ffi (1.0.11)
     gherkin (2.11.1)
       json (>= 1.4.6)
@@ -196,12 +199,13 @@ DEPENDENCIES
   cucumber-rails (= 1.2.1)
   database_cleaner (= 0.8.0)
   devise (= 2.0.4)
-  factory_girl (= 3.4.0)
+  factory_girl_rails
   jquery-rails
   pg
   rails (= 3.2.6)
   rails_admin
   rspec-rails (= 2.10.1)
   sass-rails (~> 3.2.3)
+  selenium-webdriver (~> 2.24.0)
   sqlite3
   uglifier (>= 1.0.3)

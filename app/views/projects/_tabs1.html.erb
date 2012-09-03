@@ -4,11 +4,11 @@
 
 <div id="tabs"> 
 
-<ul>
-	<li <%= "id=selected" if current_page?(:controller=>'projects', :action =>'summary')%> ><%= link_to 'Summary', project_path(@project.id.to_s+'/summary') %></li>
-	<li <%= "id=selected" if current_page?(:controller=>'projects', :action =>'analyses')%> ><%= link_to 'Analyses', project_path(@project.id.to_s+'/analyses')%></li>
-	<li <%= "id=selected" if current_page?(:controller=>'projects', :action =>'equip')%> ><%= link_to 'Equipment', project_path(@project.id.to_s+'/equip')%></li>
-	<li <%= "id=selected" if current_page?(:controller=>'projects', :action =>'show')%> ><%= link_to 'Project Details', project_path(@project)%></li>
-</ul>
+  <ul>
+    <li <%= "id=selected" if current_page?(:controller=>'projects', :action =>'summary')%> ><%= link_to 'Summary', project_path(@project.id.to_s+'/summary') %></li>
+    <li <%= "id=selected" if current_page?(:controller=>'projects', :action =>'analyses')%> ><%= link_to 'Analyses', project_path(@project.id.to_s+'/analyses')%></li>
+    <li <%= "id=selected" if current_page?(:controller=>'projects', :action =>'equip')%> ><%= link_to 'Equipment', project_path(@project.id.to_s+'/equip')%></li>
+    <li <%= "id=selected" if current_page?(:controller=>'projects', :action =>'show')%> ><%= link_to 'Project Details', project_path(@project)%></li>
+  </ul>
 
 </div>

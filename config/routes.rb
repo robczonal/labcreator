@@ -4,8 +4,10 @@ NuLab::Application.routes.draw do
   mount RailsAdmin::Engine => '/nulab_admin', :as => 'rails_admin'
 
 
-  devise_for :admins do get '/admins/sign_out' => 'devise/sessions#destroy' end
- 
+  devise_for :admins 
+  devise_scope :admins do 
+	get '/admins/sign_out' => 'devise/sessions#destroy' 
+	post '/admins/sign_in' => 'devise/sessions#create' end
 
   devise_for :users
 
@@ -28,7 +30,7 @@ NuLab::Application.routes.draw do
           resources :comments
           resources :baskets
           resources :procedurexes do
-            resources :ingredients
+            resources :ingredientsgit
           end
           resources :equipment
           resources :equipcats

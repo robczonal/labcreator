@@ -1,7 +1,7 @@
 Feature: user creates a project
     Scenario: User adds a project
-            Given I go to the new project page
-            And I fill in "name" with "project 1"
-            When I press "Create Project"
-            Then I should be on the project show page
-            And I should see "project 1"
+	    Given I have one user with email "test@test.com" and password "password"
+            Given I gonp to the new project page
+            And I fillnp in "name" with "project 1"
+            When I pressnp "Create Project"
+            And I shouldnp see "project 1"
