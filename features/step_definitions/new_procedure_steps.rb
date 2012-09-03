@@ -19,7 +19,7 @@ And /^I selectnp "(.*?)" from "(.*?)"$/ do |analysis, menu|
 end
 
 When /^I press np "(.*?)"$/ do |create|
-  click_button('Create Procedurex')
+  click_button(create)
 end
 
 #Then /^I should be on the procedure show page$/ do

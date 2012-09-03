@@ -19,7 +19,7 @@ And /^I fillccc in "(.*?)" with "(.*?)"$/ do |value, text|
 end
 
 When /^I presscc "(.*?)"$/ do |create|
-  click_button('Create Comment')
+  click_button(create)
 end 
 
 #Then /^I shouldcc be on the project details page$/ do

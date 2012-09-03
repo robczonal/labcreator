@@ -2,8 +2,8 @@ Given /^I go to the home page$/ do
   visit('/')
 end
 
-When /^I pressx "(.*?)"$/ do |arg1|
-  click_link('Sign in')
+When /^I pressx "(.*?)"$/ do |text|
+  click_link(text)
 end
 
 Then /^I should be on the users sign_in page$/ do
@@ -20,14 +20,12 @@ And /^I writeur in "(.*?)" with "(.*?)"$/ do |value, text|
   fill_in(value,:with=>text)
 end
 
-When /^I clickx "(.*?)"$/ do |arg1|
-  click_button('Sign in')
+When /^I clickx "(.*?)"$/ do |text|
+  click_button(text)
 end
 
-Then /^I should be on the home su page$/ do
-   visit('/')
-end
-
-And /^I should see su "(.*?)"$/ do |text|
+Then /^I shouldusu see "(.*?)"$/ do |text|
   page.should have_content(text)
 end
+
+

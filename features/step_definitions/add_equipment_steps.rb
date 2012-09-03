@@ -84,7 +84,7 @@ Then /^I clickaea on "(.*?)"$/ do |proc|
 end
 
 Then /^I clickaeb on "(.*?)"$/ do |update|
-  click_button('Update Equipment')
+  click_button(update)
 end
 
 Then /^I shouldae be on the project equipment page$/ do

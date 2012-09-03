@@ -27,7 +27,7 @@ And /^I fillnp in "(.*?)" with "(.*?)"$/ do |value, text|
 end
 
 When /^I pressnp "(.*?)"$/ do |create|
-  click_button('Create Project')
+  click_button(create)
 end 
 
 #Then /^I shouldnp be on the project show page$/ do
