@@ -72,7 +72,6 @@ ActiveRecord::Schema.define(:version => 20120903113134) do
     t.string   "picture"
     t.text     "description"
     t.text     "alert"
-    t.string   "eqtype"
     t.datetime "created_at",   :null => false
     t.datetime "updated_at",   :null => false
     t.integer  "equipcat_id"
@@ -116,9 +115,8 @@ ActiveRecord::Schema.define(:version => 20120903113134) do
     t.string   "email"
     t.text     "description"
     t.date     "deadline"
-    t.integer  "procedurex_id"
-    t.datetime "created_at",    :null => false
-    t.datetime "updated_at",    :null => false
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
   end
 
   create_table "projects_testxes", :id => false, :force => true do |t|

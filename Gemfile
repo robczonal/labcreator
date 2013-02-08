@@ -55,6 +55,9 @@ group :development, :test do
 	gem 'rspec-rails', '2.10.1'
 	gem 'database_cleaner', '0.8.0'
 	gem 'factory_girl_rails', :require => false
-	gem "selenium-webdriver", "~> 2.24.0"
-	gem "selenium-rc", "~> 2.20.0"
+	gem 'selenium-webdriver', '~> 2.24.0'
+	gem 'selenium-rc', '~> 2.20.0'
+	gem 'rake', '10.0.3'
+	gem 'i18n', '0.6.1'
+	gem 'activesupport', '3.2.6'
 end
